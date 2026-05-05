@@ -7,7 +7,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="CampConnect">
 <title>CampConnect</title>
-<link id="manifestLink" rel="manifest">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
 <style>
 :root{--pine:#0f3d2e;--pine2:#176f50;--bg:#f5faf6;--card:#fffef9;--ink:#10221b;--muted:#66756e;--line:#dbe8df;--danger:#d9485f;--good:#0f9f6e;--shadow:0 16px 38px rgba(16,34,27,.12)}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top left,#e2f8eb,#f5faf6 42%,#fff6e3);color:var(--ink)}button,input,textarea{font:inherit}
@@ -401,7 +403,37 @@ function exportAudit(){const rows=state.audit.map(a=>[a.at,a.actor,a.action,a.de
   app.addEventListener("click",e=>{const btn=e.target.closest("button");if(!btn)return;const action=btn.dataset.action;if(action==="camper-login")doCamperLogin();if(action==="staff-login")doStaffLogin();if(action==="admin-login")doAdminLogin();if(action==="select-service"){selectedService=btn.dataset.service;renderCamper()}if(action==="submit-request")submitRequest();if(action==="staff-tab"){staffTab=btn.dataset.tab;renderStaff()}if(action==="admin-tab"){adminTab=btn.dataset.tab;renderAdmin()}if(action==="analytics-prev-day"){analyticsDayOffset--;renderAdmin()}if(action==="analytics-next-day"){analyticsDayOffset++;renderAdmin()}if(action==="analytics-today"){analyticsDayOffset=0;renderAdmin()}if(action==="staff-site-search")staffSearchSite();if(action==="admin-site-search")adminSearchSite();if(action==="save-request-notes")saveRequestNotes(btn.dataset.id);if(action==="close-request")closeRequest(btn.dataset.id);if(action==="reopen-request")reopenRequest(btn.dataset.id);if(action==="delete-request")deleteRequest(btn.dataset.id);if(action==="save-site")saveSite(Number(btn.dataset.site));if(action==="random-pin")randomizePin(Number(btn.dataset.site));if(action==="add-staff")addStaff();if(action==="add-admin")addAdmin();if(action==="toggle-staff")toggleStaff(btn.dataset.index);if(action==="delete-staff")deleteStaff(btn.dataset.index);if(action==="toggle-admin")toggleAdmin(btn.dataset.index);if(action==="delete-admin")deleteAdmin(btn.dataset.index);if(action==="export-site-pins")exportSitePins();if(action==="export-analytics")exportAnalytics();if(action==="export-audit")exportAudit()});
   app.addEventListener("input",e=>{if(["pinInput","staffPin","adminPin","newStaffPin","newAdminPin","editSitePin"].includes(e.target.id))e.target.value=pin(e.target.value)});
 
-  function setupPWA(){const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="%230f3d2e"/><text x="50%" y="57%" dominant-baseline="middle" text-anchor="middle" font-size="230">🏕️</text></svg>';const iconUrl="data:image/svg+xml,"+svg;const manifest={name:"CampConnect",short_name:"CampConnect",start_url:".",display:"standalone",background_color:"#f5faf6",theme_color:"#0f3d2e",icons:[{src:iconUrl,sizes:"any",type:"image/svg+xml",purpose:"any maskable"}]};document.getElementById("manifestLink").href=URL.createObjectURL(new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"}));if("serviceWorker"in navigator&&location.protocol!=="file:"){const sw=`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:"text/javascript"}))).catch(()=>{})}window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;document.getElementById("installBar").classList.add("show")});document.getElementById("installBtn").onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}document.getElementById("installBar").classList.remove("show")};document.getElementById("dismissInstall").onclick=()=>document.getElementById("installBar").classList.remove("show")}
+  function setupPWA(){
+    if("serviceWorker" in navigator && location.protocol !== "file:"){
+      navigator.serviceWorker.register("service-worker.js").catch(()=>{});
+    }
+
+    let deferredPrompt = null;
+    const installBar = document.getElementById("installBar");
+    const installBtn = document.getElementById("installBtn");
+    const dismissInstall = document.getElementById("dismissInstall");
+
+    window.addEventListener("beforeinstallprompt", e=>{
+      e.preventDefault();
+      deferredPrompt = e;
+      if(installBar) installBar.classList.add("show");
+    });
+
+    if(installBtn){
+      installBtn.onclick = async ()=>{
+        if(deferredPrompt){
+          deferredPrompt.prompt();
+          deferredPrompt = null;
+        }
+        if(installBar) installBar.classList.remove("show");
+      };
+    }
+
+    if(dismissInstall){
+      dismissInstall.onclick = ()=>installBar && installBar.classList.remove("show");
+    }
+  }
+
   setupPWA();renderHome();
 })();
 </script>
