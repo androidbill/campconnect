@@ -46,6 +46,34 @@ box-shadow:0 6px 18px rgba(15,61,46,.08);
   .field{gap:3px}
   .tiny{font-size:12px}
 }
+
+/* Compact app-style UI overrides */
+body{font-size:14px}
+main{padding:10px 10px 72px}
+.topbar{padding:8px 10px}
+.logo{width:36px;height:36px;border-radius:13px;font-size:19px}
+.brand h1{font-size:17px}
+.brand p{font-size:11px}
+.hero{display:none}
+.card{border-radius:18px;padding:12px;margin-bottom:10px;box-shadow:0 8px 20px rgba(16,34,27,.08)}
+.card h3{font-size:15px;margin-bottom:8px}
+label{font-size:10px}
+input,textarea,select{border-radius:13px;padding:10px;font-size:14px}
+button{border-radius:13px;padding:10px 12px;min-height:40px;font-size:14px}
+.tiny,.muted{font-size:11px}
+.statGrid{display:none}
+.roleHome{min-height:auto;gap:8px}
+.homeCard{margin-top:4px}
+.compactHero{display:none!important}
+.service{min-height:68px;padding:11px}
+.service span{font-size:21px;margin-bottom:3px}
+.serviceGrid{gap:8px}
+.tabs{padding:5px;border-radius:16px;margin-bottom:10px}
+.tab{min-height:36px;padding:8px;font-size:13px}
+.staffGridRow{border-radius:14px;padding:8px}
+.staffGridRow button{min-height:34px;padding:7px;font-size:12px}
+.staffNote{min-height:56px}
+
 </style>
 </head>
 <body>
@@ -84,11 +112,6 @@ box-shadow:0 6px 18px rgba(15,61,46,.08);
   function renderHome(message=""){
     topAction.classList.add("hidden");
     app.innerHTML=`<div class="roleHome">
-      <section class="hero compactHero">
-        <h2>CampConnect</h2>
-        <p>Choose how you want to sign in.</p>
-      </section>
-
       <section class="card grid homeCard">
         <div class="field">
           <label>Login Type</label>
@@ -101,34 +124,24 @@ box-shadow:0 6px 18px rgba(15,61,46,.08);
 
         <div id="camperPanel" class="loginPanel active">
           <div class="field"><label>Site Number</label><input id="siteInput" inputmode="numeric" placeholder="Enter site number"></div>
-          <div class="field"><label>4 Digit PIN</label><input id="pinInput" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div>
-          <button data-action="camper-login">Camper Login</button>
-          <p class="tiny">Demo: site <b>1</b> / PIN <b>1234</b></p>
+          <div class="field"><label>PIN</label><input id="pinInput" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div>
+          <button data-action="camper-login">Login</button>
         </div>
 
         <div id="staffPanel" class="loginPanel">
           <div class="field"><label>Username</label><input id="staffUser" placeholder="Enter username"></div>
-          <div class="field"><label>4 Digit PIN</label><input id="staffPin" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div>
-          <button class="btn2" data-action="staff-login">Staff Login</button>
-          <p class="tiny">Demo: <b>staff</b> / <b>2468</b></p>
+          <div class="field"><label>PIN</label><input id="staffPin" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div>
+          <button class="btn2" data-action="staff-login">Login</button>
         </div>
 
         <div id="adminPanel" class="loginPanel">
           <div class="field"><label>Username</label><input id="adminUser" placeholder="Enter username"></div>
-          <div class="field"><label>4 Digit PIN</label><input id="adminPin" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div>
-          <button class="btn2" data-action="admin-login">Admin Login</button>
-          <p class="tiny">Demo: <b>admin</b> / <b>1977</b></p>
+          <div class="field"><label>PIN</label><input id="adminPin" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div>
+          <button class="btn2" data-action="admin-login">Login</button>
         </div>
 
         ${message?`<div class="soft">${esc(message)}</div>`:""}
       </section>
-
-      <div class="statGrid">
-        <div class="stat"><b>${state.campers.length}</b><p class="tiny">Sites</p></div>
-        <div class="stat"><b>${openRequests().length}</b><p class="tiny">Open Queue</p></div>
-        <div class="stat"><b>${state.requests.length}</b><p class="tiny">Requests</p></div>
-        <div class="stat"><b>${state.audit.length}</b><p class="tiny">Audit</p></div>
-      </div>
     </div>`;
     const roleSelect=q("roleSelect");
     if(roleSelect){
