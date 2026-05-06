@@ -318,7 +318,7 @@ function renderAdmin(){
     ${adminTab==="admins"?adminAdminsTab():""}
     ${adminTab==="requests"?adminRequestsTab():""}
     ${adminTab==="analytics"?adminAnalyticsTab():""}
-    <section class="card"><h3>Audit Log</h3><button class="btn2" data-action="export-audit">Export Audit CSV</button>${state.audit.slice(0,15).map(a=>`<div class="soft" style="margin-top:8px"><b>${esc(a.action)}</b><p class="tiny">${esc(a.at)} · ${esc(a.actor)}</p><p class="tiny">${esc(a.details)}</p></div>`).join("")}</section>`;
+    <section class="card"><h3>Audit</h3><button class="btn2" data-action="export-audit">Export Audit CSV</button></section>`;
   }
 
   function adminSitesTab(){
