@@ -25,10 +25,10 @@ background-size:18px;
 font-weight:700;
 box-shadow:0 6px 18px rgba(15,61,46,.08);
 }textarea{min-height:110px;resize:vertical}button{border:0;border-radius:18px;padding:14px 16px;font-weight:900;background:var(--pine);color:white;min-height:50px;cursor:pointer;box-shadow:0 10px 20px rgba(15,61,46,.18)}button:active{transform:scale(.98)}button:disabled{opacity:.5}.btn2{background:white;color:var(--pine);border:1px solid var(--line);box-shadow:none}.danger{background:var(--danger)}.good{background:var(--good)}.tiny,.muted{color:var(--muted);font-size:13px}.soft{background:linear-gradient(180deg,#f1f8f3,#fff);border:1px solid var(--line);padding:12px;border-radius:18px}.statGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:white;border:1px solid var(--line);border-radius:22px;padding:14px}.stat b{font-size:25px;display:block}.row{display:flex;gap:10px;align-items:center}.row>*{flex:1}.split{display:flex;align-items:center;justify-content:space-between;gap:10px}.serviceGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.service{background:white;color:var(--ink);border:1px solid var(--line);box-shadow:none;text-align:left;min-height:92px;padding:15px}.service.selected{background:linear-gradient(135deg,var(--pine),var(--pine2));color:white}.service span{font-size:26px;display:block;margin-bottom:6px}.badge{display:inline-flex;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:900;background:#e5eee8;color:#355145}.open{background:#dff7ea;color:#09633d}.closed{background:#e9ecea;color:#66756e}
-.staffGrid{display:grid;gap:8px}.staffGridHead,.staffGridRow{display:grid;grid-template-columns:76px 1.1fr 1fr 1.5fr 170px;gap:10px;align-items:center}.staffGridHead{font-size:12px;font-weight:950;color:#3f554b;text-transform:uppercase;letter-spacing:.04em;padding:0 8px}.staffGridRow{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:0 8px 18px rgba(16,34,27,.07)}.staffGridRow .notes{white-space:pre-wrap;color:var(--muted);font-size:13px}.staffNote{min-height:74px;padding:10px;border-radius:14px}.staffGridRow .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.staffGridRow button{min-height:42px;padding:10px}
+.staffGrid{display:grid;gap:8px}.staffGridHead,.staffGridRow{display:grid;grid-template-columns:62px 1fr 1fr 138px;gap:8px;align-items:center}.staffGridHead{font-size:12px;font-weight:950;color:#3f554b;text-transform:uppercase;letter-spacing:.04em;padding:0 8px}.staffGridRow{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:7px 8px;box-shadow:0 5px 12px rgba(16,34,27,.06);min-height:46px}.staffGridRow .notes{white-space:pre-wrap;color:var(--muted);font-size:13px}.staffNote{min-height:74px;padding:10px;border-radius:14px}.staffGridRow .actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.staffGridRow button{min-height:34px;padding:7px 8px;font-size:12px}
 .tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:7px;border:1px solid var(--line);border-radius:22px;margin-bottom:14px;background:rgba(255,255,255,.65)}.tab{background:transparent;color:var(--muted);box-shadow:none}.tab.active{background:white;color:var(--pine);border:1px solid var(--line)}.toast{position:fixed;left:16px;right:16px;bottom:18px;z-index:50;background:#10221b;color:white;padding:15px 16px;border-radius:20px;display:none;box-shadow:var(--shadow)}.toast.show{display:block}.installBar{position:fixed;left:14px;right:14px;bottom:14px;z-index:40;background:rgba(16,34,27,.97);color:white;border-radius:24px;padding:13px;box-shadow:var(--shadow);display:none;align-items:center;gap:12px}.installBar.show{display:flex}.installBar p{margin:0;flex:1;font-size:13px;color:#dcfce7}.installBar button{width:auto;min-height:auto;padding:10px 12px;background:white;color:var(--pine)}.hidden{display:none!important}
 @media(min-width:760px){main{padding:24px 18px 110px}.grid2{grid-template-columns:1fr 1fr}.serviceGrid{grid-template-columns:repeat(4,1fr)}.statGrid{grid-template-columns:repeat(4,1fr)}.hero h2{font-size:42px}}
-@media(max-width:760px){.staffGridHead{display:none}.staffGridRow{grid-template-columns:1fr}.staffGridRow>div:before{display:block;font-size:11px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}.staffGridRow .site:before{content:"Site #"}.staffGridRow .person:before{content:"Name"}.staffGridRow .serviceCol:before{content:"Service"}.staffGridRow .notes:before{content:"Notes"}.staffGridRow .actions{grid-template-columns:1fr 1fr}.staffGridRow .actions:before{display:none}}
+@media(max-width:760px){.staffGridHead{display:none}.staffGridRow{grid-template-columns:1fr}.staffGridRow>div:before{display:block;font-size:11px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}.staffGridRow .site:before{content:"Site #"}.staffGridRow .person:before{content:"Name"}.staffGridRow .serviceCol:before{content:"Service"}.staffGridRow .actions{grid-template-columns:1fr 1fr}.staffGridRow .actions:before{display:none}}
 @media(max-width:520px){.tabs{grid-template-columns:repeat(2,1fr)}}
 
 .roleHome{min-height:calc(100vh - 86px);display:grid;align-content:start;gap:12px}
@@ -74,6 +74,16 @@ button{border-radius:13px;padding:10px 12px;min-height:40px;font-size:14px}
 .staffGridRow button{min-height:34px;padding:7px;font-size:12px}
 .staffNote{min-height:56px}
 
+
+.camperTop{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.camperTop .siteTitle{font-size:18px;font-weight:900}
+.requestCompact{display:grid;gap:8px}
+.requestCompact textarea{min-height:64px}
+.requestCompact .serviceGrid{grid-template-columns:repeat(2,1fr)}
+.requestCompact .service{min-height:48px;padding:9px;text-align:center}
+.requestCompact .service span{display:inline;font-size:16px;margin:0 4px 0 0}
+@media(min-width:520px){.requestCompact .serviceGrid{grid-template-columns:repeat(4,1fr)}}
+.staffGridRow .person,.staffGridRow .serviceCol{font-size:13px}.staffGridRow .site b{font-size:16px}.staffGrid{gap:6px}.staffGridHead{grid-template-columns:62px 1fr 1fr 138px}.staffGridHead div:nth-child(4){display:block}
 </style>
 </head>
 <body>
@@ -84,10 +94,11 @@ button{border-radius:13px;padding:10px 12px;min-height:40px;font-size:14px}
 <script>
 (function(){
   const STORE="campconnect_levelup_fixed_admin_v1";
+  const SESSION="campconnect_current_session_v1";
   const app=document.getElementById("app");
   const topAction=document.getElementById("topAction");
   const toastEl=document.getElementById("toast");
-  let state=load(), role="home", actor=null, selectedService="", staffTab="queue", adminTab="sites", deferredPrompt=null;
+  let state=load(), role="home", actor=null, selectedService="Water", camperTab="request", staffTab="queue", adminTab="sites", deferredPrompt=null;
 
   function id(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
   function pin(v){return String(v||"").replace(/\D/g,"").slice(0,4)}
@@ -102,9 +113,48 @@ button{border-radius:13px;padding:10px 12px;min-height:40px;font-size:14px}
   function ensureData(d){if(!d||!Array.isArray(d.campers))return seed();d.requests=Array.isArray(d.requests)?d.requests:[];d.staff=Array.isArray(d.staff)?d.staff:[{username:"staff",pin:"2468",active:true}];d.admins=Array.isArray(d.admins)?d.admins:[{username:"admin",pin:"1977",active:true}];d.audit=Array.isArray(d.audit)?d.audit:[];const used=new Set(d.campers.map(c=>c.pin).filter(Boolean));for(let i=1;i<=400;i++)if(!d.campers.some(c=>c.site===i))d.campers.push({site:i,name:"Site "+i,pin:randomPin(used),active:true});d.campers.sort((a,b)=>a.site-b.site);return d}
   function load(){try{return ensureData(JSON.parse(localStorage.getItem(STORE)))}catch{return seed()}}
   function save(){localStorage.setItem(STORE,JSON.stringify(state))}
+  function saveSession(){
+    try{
+      sessionStorage.setItem(SESSION,JSON.stringify({
+        role, actor, selectedService, camperTab, staffTab, adminTab
+      }));
+    }catch{}
+  }
+  function clearSession(){
+    try{sessionStorage.removeItem(SESSION)}catch{}
+  }
+  function restoreSession(){
+    try{
+      const s=JSON.parse(sessionStorage.getItem(SESSION)||"null");
+      if(!s||!s.role||s.role==="home")return false;
+      role=s.role;
+      selectedService=s.selectedService||"Water";
+      camperTab=s.camperTab||"request";
+      staffTab=s.staffTab||"queue";
+      adminTab=s.adminTab||"sites";
+
+      if(s.role==="camper"&&s.actor){
+        actor=state.campers.find(c=>c.site===s.actor.site)||null;
+      }else if(s.role==="staff"&&s.actor){
+        actor=state.staff.find(x=>norm(x.username)===norm(s.actor.username))||null;
+      }else if(s.role==="admin"&&s.actor){
+        actor=state.admins.find(x=>norm(x.username)===norm(s.actor.username))||null;
+      }
+
+      if(!actor)return false;
+      topAction.classList.toggle("hidden",role==="home"||role==="camper");
+      return true;
+    }catch{return false}
+  }
   function audit(action,details){state.audit.unshift({id:id(),at:now(),actor:actor?.username||actor?.name||"System",action,details});save()}
   function openRequests(){return state.requests.filter(r=>r.status==="open")}
-  function scrollTopNow(){window.scrollTo({top:0,left:0,behavior:"instant"});document.documentElement.scrollTop=0;document.body.scrollTop=0}function setRole(r,a=null){role=r;actor=a;selectedService="";topAction.classList.toggle("hidden",role==="home");render();scrollTopNow()}
+  function scrollTopNow(){window.scrollTo({top:0,left:0,behavior:"instant"});document.documentElement.scrollTop=0;document.body.scrollTop=0}function setRole(r,a=null){
+    role=r;actor=a;selectedService="Water";
+    if(role==="camper")camperTab="request";
+    topAction.classList.toggle("hidden",role==="home"||role==="camper");
+    if(role==="home")clearSession();else saveSession();
+    render();scrollTopNow()
+  }
   topAction.onclick=()=>setRole("home");
 
   function render(){if(role==="home")renderHome();if(role==="camper")renderCamper();if(role==="staff")renderStaff();if(role==="admin")renderAdmin()}
@@ -157,34 +207,83 @@ button{border-radius:13px;padding:10px 12px;min-height:40px;font-size:14px}
 
 function renderCamper(){
     const services=[["Water","💧"],["Propane","🔥"],["Firewood","🪵"],["Leaves","🍂"],["Trash","🗑️"],["Ice","🧊"],["Electric","⚡"],["Other","🔧"]];
-    const history=state.requests.filter(r=>r.site===actor.site).slice(0,8);
-    app.innerHTML=`<section class="hero"><h2>Site ${actor.site}</h2><p>${esc(actor.name)}</p></section>
-    <section class="card grid"><h3>What do you need?</h3><div class="serviceGrid">${services.map(([name,icon])=>`<button class="service ${selectedService===name?"selected":""}" data-action="select-service" data-service="${esc(name)}"><span>${icon}</span><b>${esc(name)}</b></button>`).join("")}</div><div id="requestBox" class="${selectedService?"":"hidden"}"><h3 style="margin-top:16px">${esc(selectedService)}</h3><textarea id="requestNotes" placeholder="Optional notes, location, or special instructions"></textarea><button data-action="submit-request">Submit Request</button></div></section>
-    <section class="card"><h3>Recent Site History</h3>${history.length?history.map(r=>`<div class="soft" style="margin-bottom:8px"><b>${esc(r.service)}</b> <span class="badge ${r.status==="open"?"open":"closed"}">${esc(r.status)}</span><p class="tiny">${esc(r.createdAt)}</p>${r.notes?`<div class="tiny">${esc(r.notes)}</div>`:""}</div>`).join(""):`<p class="tiny">No requests yet.</p>`}</section>`;
+    const history=state.requests.filter(r=>r.site===actor.site).slice(0,20);
+
+    app.innerHTML=`<section class="card">
+      <div class="camperTop">
+        <div>
+          <div class="siteTitle">Site ${actor.site}</div>
+          <div class="tiny">${esc(actor.name)}</div>
+        </div>
+        <button class="btn2" data-action="logout" style="width:auto">Logout</button>
+      </div>
+    </section>
+
+    <div class="tabs">
+      <button class="tab ${camperTab==="request"?"active":""}" data-action="camper-tab" data-tab="request">Request a Service</button>
+      <button class="tab ${camperTab==="history"?"active":""}" data-action="camper-tab" data-tab="history">History</button>
+    </div>
+
+    ${camperTab==="request"?camperRequestTab(services):camperHistoryTab(history)}`;
   }
 
-  function renderStaff(){
+  function camperRequestTab(services){
+    return `<section class="card requestCompact">
+      <h3>Request a Service</h3>
+      <div class="serviceGrid">
+        ${services.map(([name,icon])=>`<button class="service ${selectedService===name?"selected":""}" data-action="select-service" data-service="${esc(name)}"><span>${icon}</span><b>${esc(name)}</b></button>`).join("")}
+      </div>
+      <div class="field">
+        <label>Notes</label>
+        <textarea id="requestNotes" placeholder="Optional notes"></textarea>
+      </div>
+      <button data-action="submit-request">Submit ${esc(selectedService)} Request</button>
+    </section>`;
+  }
+
+  function camperHistoryTab(history){
+    return `<section class="card">
+      <h3>History</h3>
+      ${history.length?history.map(r=>`<div class="soft" style="margin-bottom:8px"><b>${esc(r.service)}</b> <span class="badge ${r.status==="open"?"open":"closed"}">${esc(r.status)}</span><p class="tiny">${esc(r.createdAt)}</p>${r.notes?`<div class="tiny">${esc(r.notes)}</div>`:""}</div>`).join(""):`<p class="tiny">No requests yet.</p>`}
+    </section>`;
+  }
+
+function renderStaff(){
     const reqs=state.requests.filter(r=>staffTab==="queue"?r.status==="open":true);
     app.innerHTML=`<section class="hero"><h2>Staff Queue</h2><p>${openRequests().length} open request${openRequests().length===1?"":"s"} right now.</p></section>
     <div class="tabs"><button class="tab ${staffTab==="queue"?"active":""}" data-action="staff-tab" data-tab="queue">Queue</button><button class="tab ${staffTab==="all"?"active":""}" data-action="staff-tab" data-tab="all">All</button><button class="tab ${staffTab==="sites"?"active":""}" data-action="staff-tab" data-tab="sites">Sites</button></div>
     ${staffTab==="sites"?staffSiteSearch():staffRequestGrid(reqs)}`;
   }
   function staffSiteSearch(){return `<section class="card grid"><h3>Find Site</h3><input id="staffSiteLookup" inputmode="numeric" placeholder="Site #"><button data-action="staff-site-search">Search</button><div id="staffSiteResult"></div></section>`}
-  function staffRequestGrid(reqs){if(!reqs.length)return`<section class="card"><p class="tiny">No requests here.</p></section>`;return`<div class="staffGrid"><div class="staffGridHead"><div>Site #</div><div>Name</div><div>Service</div><div>Notes</div><div>Actions</div></div>${reqs.map(r=>`<div class="staffGridRow"><div class="site"><b>${esc(r.site)}</b></div><div class="person">${esc(r.name)}</div><div class="serviceCol"><b>${esc(r.service)}</b> <span class="badge ${r.status==="open"?"open":"closed"}">${esc(r.status)}</span></div><div class="notes"><textarea class="staffNote" data-note-id="${esc(r.id)}" placeholder="Update request notes">${esc(r.notes||"")}</textarea></div><div class="actions"><button class="btn2" data-action="save-request-notes" data-id="${esc(r.id)}">Save Notes</button><button class="good" data-action="${r.status==="open"?"close-request":"reopen-request"}" data-id="${esc(r.id)}">${r.status==="open"?"Close":"Reopen"}</button><button class="danger" data-action="delete-request" data-id="${esc(r.id)}">Delete</button></div></div>`).join("")}</div>`}
+  function staffRequestGrid(reqs){
+    if(!reqs.length)return`<section class="card"><p class="tiny">No requests here.</p></section>`;
+    return`<div class="staffGrid">
+      <div class="staffGridHead"><div>Site</div><div>Name</div><div>Service</div><div>Actions</div></div>
+      ${reqs.map(r=>`<div class="staffGridRow">
+        <div class="site"><b>${esc(r.site)}</b></div>
+        <div class="person">${esc(r.name)}</div>
+        <div class="serviceCol"><b>${esc(r.service)}</b> <span class="badge ${r.status==="open"?"open":"closed"}">${esc(r.status)}</span></div>
+        <div class="actions">
+          <button class="good" data-action="complete-request" data-id="${esc(r.id)}" ${r.status==="open"?"":"disabled"}>Complete</button>
+          <button class="danger" data-action="cancel-request" data-id="${esc(r.id)}" ${r.status==="open"?"":"disabled"}>Cancel</button>
+        </div>
+      </div>`).join("")}
+    </div>`;
+  }
 
-  function renderAdmin(){
+function renderAdmin(){
     app.innerHTML=`<section class="hero"><h2>Admin</h2><p>Manage sites, staff, admins, and open requests.</p></section>
     <div class="tabs">
       <button class="tab ${adminTab==="sites"?"active":""}" data-action="admin-tab" data-tab="sites">Sites</button>
       <button class="tab ${adminTab==="staff"?"active":""}" data-action="admin-tab" data-tab="staff">Staff</button>
       <button class="tab ${adminTab==="admins"?"active":""}" data-action="admin-tab" data-tab="admins">Admin</button>
-      <button class="tab ${adminTab==="open"?"active":""}" data-action="admin-tab" data-tab="open">Open</button>
+      <button class="tab ${adminTab==="requests"?"active":""}" data-action="admin-tab" data-tab="requests">Requests</button>
       <button class="tab ${adminTab==="analytics"?"active":""}" data-action="admin-tab" data-tab="analytics">Analytics</button>
     </div>
     ${adminTab==="sites"?adminSitesTab():""}
     ${adminTab==="staff"?adminStaffTab():""}
     ${adminTab==="admins"?adminAdminsTab():""}
-    ${adminTab==="open"?adminOpenRequestsTab():""}
+    ${adminTab==="requests"?adminRequestsTab():""}
     ${adminTab==="analytics"?adminAnalyticsTab():""}
     <section class="card"><h3>Audit Log</h3><button class="btn2" data-action="export-audit">Export Audit CSV</button>${state.audit.slice(0,15).map(a=>`<div class="soft" style="margin-top:8px"><b>${esc(a.action)}</b><p class="tiny">${esc(a.at)} · ${esc(a.actor)}</p><p class="tiny">${esc(a.details)}</p></div>`).join("")}</section>`;
   }
@@ -201,14 +300,35 @@ function renderCamper(){
     return `<section class="card grid"><h3>Admins</h3><div class="field"><label>Username</label><input id="newAdminUser" placeholder="username"></div><div class="field"><label>4 Digit PIN</label><input id="newAdminPin" inputmode="numeric" maxlength="4" placeholder="4 digit PIN"></div><button data-action="add-admin">Add Admin</button>${state.admins.map((a,idx)=>`<div class="soft"><div class="split"><b>${esc(a.username)}</b><span class="badge ${a.active?"open":"closed"}">${a.active?"Active":"Disabled"}</span></div><p class="tiny">PIN: ${esc(a.pin)}</p><div class="row"><button type="button" class="btn2" data-action="toggle-admin" data-index="${idx}">${a.active?"Disable":"Enable"}</button><button type="button" class="danger" data-action="delete-admin" data-index="${idx}">Delete</button></div></div>`).join("")}</section>`;
   }
 
-  function adminOpenRequestsTab(){
-    const reqs=state.requests.filter(r=>r.status==="open");
-    if(!reqs.length)return `<section class="card"><h3>Open Requests</h3><p class="tiny">No open requests.</p></section>`;
-    return `<section class="card"><h3>Open Requests</h3><p class="tiny">${reqs.length} open request${reqs.length===1?"":"s"}.</p>${staffRequestGrid(reqs)}</section>`;
+  function adminRequestsTab(){
+    const reqs = state.requests.filter(r=>{
+      if(staffTab==="queue") return r.status==="open";
+      return true;
+    });
+
+    return `
+      <section class="card">
+        <button class="btn2" data-action="admin-requests-back" style="margin-bottom:10px">← Back to Admin</button>
+        <div class="tabs">
+          <button class="tab ${staffTab==="queue"?"active":""}" data-action="staff-tab" data-tab="queue">Queue</button>
+          <button class="tab ${staffTab==="all"?"active":""}" data-action="staff-tab" data-tab="all">All</button>
+          <button class="tab ${staffTab==="sites"?"active":""}" data-action="staff-tab" data-tab="sites">Sites</button>
+        </div>
+
+        ${staffTab==="sites"
+          ? `<section class="grid">
+              <h3>Find Site</h3>
+              <input id="staffSiteLookup" inputmode="numeric" placeholder="Site #">
+              <button data-action="staff-site-search">Search</button>
+              <div id="staffSiteResult"></div>
+            </section>`
+          : staffRequestGrid(reqs)
+        }
+      </section>
+    `;
   }
 
-
-  function parseDateSafe(v){
+function parseDateSafe(v){
     const d = new Date(v);
     return isNaN(d.getTime()) ? null : d;
   }
@@ -337,10 +457,10 @@ function siteDetailsHtml(siteNumber){
   function doCamperLogin(){const site=Number(q("siteInput").value), p=pin(q("pinInput").value), camper=state.campers.find(c=>c.active&&c.site===site&&c.pin===p);if(!camper){renderHome("Invalid site number or PIN.");scrollTopNow();return}setRole("camper",camper)}
   function doStaffLogin(){const username=norm(q("staffUser").value), p=pin(q("staffPin").value), staff=state.staff.find(s=>norm(s.username)===username&&s.pin===p&&s.active);if(!staff){renderHome("Invalid staff login.");scrollTopNow();return}setRole("staff",staff)}
   function doAdminLogin(){const username=norm(q("adminUser").value), p=pin(q("adminPin").value), admin=state.admins.find(a=>norm(a.username)===username&&a.pin===p&&a.active);if(!admin){renderHome("Invalid admin login.");scrollTopNow();return}setRole("admin",admin)}
-  function submitRequest(){if(!selectedService)return toast("Pick a service first.");const request={id:id(),site:actor.site,name:actor.name,service:selectedService,notes:q("requestNotes")?q("requestNotes").value.trim():"",status:"open",createdAt:now()};state.requests.unshift(request);audit("Created request",`${request.service} for site ${request.site}`);save();selectedService="";toast("Request submitted");renderCamper()}
-  function closeRequest(requestId){const req=state.requests.find(r=>r.id===requestId);if(req){req.status="closed";req.closedAt=now();req.completedBy=actor?.username||actor?.name||"Staff";audit("Closed request",`${req.service} / site ${req.site} by ${req.completedBy}`)}save();renderStaff()}
-  function reopenRequest(requestId){const req=state.requests.find(r=>r.id===requestId);if(req){req.status="open";req.closedAt="";audit("Reopened request",`${req.service} / site ${req.site}`)}save();renderStaff()}
-  function saveRequestNotes(requestId){const req=state.requests.find(r=>r.id===requestId);const noteEl=document.querySelector(`[data-note-id="${requestId}"]`);if(req&&noteEl){req.notes=noteEl.value.trim();req.updatedAt=now();audit("Updated request notes",`${req.service} / site ${req.site}`);save();toast("Notes saved");renderStaff()}}
+  function submitRequest(){if(!selectedService)selectedService="Water";const request={id:id(),site:actor.site,name:actor.name,service:selectedService,notes:q("requestNotes")?q("requestNotes").value.trim():"",status:"open",createdAt:now()};state.requests.unshift(request);audit("Created request",`${request.service} for site ${request.site}`);save();selectedService="Water";camperTab="request";toast("Request submitted");renderCamper()}
+  function completeRequest(requestId){const req=state.requests.find(r=>r.id===requestId);if(req){req.status="closed";req.closedAt=now();req.completedBy=actor?.username||actor?.name||"Staff";audit("Completed request",`${req.service} / site ${req.site} by ${req.completedBy}`)}save();renderStaff()}
+  function cancelRequest(requestId){const req=state.requests.find(r=>r.id===requestId);if(req){req.status="canceled";req.closedAt=now();req.completedBy=actor?.username||actor?.name||"Staff";audit("Canceled request",`${req.service} / site ${req.site} by ${req.completedBy}`)}save();renderStaff()}
+  function closeRequest(requestId){completeRequest(requestId)}
   function deleteRequest(requestId){const req=state.requests.find(r=>r.id===requestId);state.requests=state.requests.filter(r=>r.id!==requestId);audit("Deleted request",req?`${req.service} / site ${req.site}`:requestId);save();renderStaff()}
   function saveSite(siteNumber){const camper=state.campers.find(c=>c.site===siteNumber);if(!camper)return;const name=(q("editSiteName")?.value||"").trim(), newPin=pin(q("editSitePin")?.value||"");if(!name||newPin.length!==4)return alert("Name and 4 digit PIN required.");camper.name=name;camper.pin=newPin;audit("Updated site account",`Site ${siteNumber}: ${camper.name}`);save();adminSearchSite()}
   function randomizePin(siteNumber){const camper=state.campers.find(c=>c.site===siteNumber);if(!camper)return;camper.pin=randomPin(new Set(state.campers.filter(c=>c.site!==siteNumber).map(c=>c.pin)));audit("Randomized site PIN",`Site ${siteNumber}`);save();adminSearchSite()}
@@ -413,7 +533,7 @@ function exportAnalytics(){
 function exportAudit(){const rows=state.audit.map(a=>[a.at,a.actor,a.action,a.details].map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");download("campconnect-audit.csv",`"Date","Actor","Action","Details"\n${rows}`,"text/csv")}
   function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
 
-  app.addEventListener("click",e=>{const btn=e.target.closest("button");if(!btn)return;const action=btn.dataset.action;if(action==="camper-login")doCamperLogin();if(action==="staff-login")doStaffLogin();if(action==="admin-login")doAdminLogin();if(action==="select-service"){selectedService=btn.dataset.service;renderCamper()}if(action==="submit-request")submitRequest();if(action==="staff-tab"){staffTab=btn.dataset.tab;renderStaff()}if(action==="admin-tab"){adminTab=btn.dataset.tab;renderAdmin()}if(action==="analytics-prev-day"){analyticsDayOffset--;renderAdmin()}if(action==="analytics-next-day"){analyticsDayOffset++;renderAdmin()}if(action==="analytics-today"){analyticsDayOffset=0;renderAdmin()}if(action==="staff-site-search")staffSearchSite();if(action==="admin-site-search")adminSearchSite();if(action==="save-request-notes")saveRequestNotes(btn.dataset.id);if(action==="close-request")closeRequest(btn.dataset.id);if(action==="reopen-request")reopenRequest(btn.dataset.id);if(action==="delete-request")deleteRequest(btn.dataset.id);if(action==="save-site")saveSite(Number(btn.dataset.site));if(action==="random-pin")randomizePin(Number(btn.dataset.site));if(action==="add-staff")addStaff();if(action==="add-admin")addAdmin();if(action==="toggle-staff")toggleStaff(btn.dataset.index);if(action==="delete-staff")deleteStaff(btn.dataset.index);if(action==="toggle-admin")toggleAdmin(btn.dataset.index);if(action==="delete-admin")deleteAdmin(btn.dataset.index);if(action==="export-site-pins")exportSitePins();if(action==="export-analytics")exportAnalytics();if(action==="export-audit")exportAudit()});
+  app.addEventListener("click",e=>{const btn=e.target.closest("button");if(!btn)return;const action=btn.dataset.action;if(action==="camper-login")doCamperLogin();if(action==="staff-login")doStaffLogin();if(action==="admin-login")doAdminLogin();if(action==="camper-tab"){camperTab=btn.dataset.tab;saveSession();renderCamper();scrollTopNow()}if(action==="logout")setRole("home");if(action==="select-service"){selectedService=btn.dataset.service;renderCamper()}if(action==="submit-request")submitRequest();if(action==="staff-tab"){staffTab=btn.dataset.tab;saveSession();renderStaff()}if(action==="admin-tab"){adminTab=btn.dataset.tab;saveSession();renderAdmin()}if(action==="admin-requests-back"){adminTab="sites";saveSession();renderAdmin();scrollTopNow()}if(action==="analytics-prev-day"){analyticsDayOffset--;renderAdmin()}if(action==="analytics-next-day"){analyticsDayOffset++;renderAdmin()}if(action==="analytics-today"){analyticsDayOffset=0;renderAdmin()}if(action==="staff-site-search")staffSearchSite();if(action==="admin-site-search")adminSearchSite();if(action==="complete-request")completeRequest(btn.dataset.id);if(action==="close-request")completeRequest(btn.dataset.id);if(action==="reopen-request")reopenRequest(btn.dataset.id);if(action==="cancel-request")cancelRequest(btn.dataset.id);if(action==="delete-request")deleteRequest(btn.dataset.id);if(action==="save-site")saveSite(Number(btn.dataset.site));if(action==="random-pin")randomizePin(Number(btn.dataset.site));if(action==="add-staff")addStaff();if(action==="add-admin")addAdmin();if(action==="toggle-staff")toggleStaff(btn.dataset.index);if(action==="delete-staff")deleteStaff(btn.dataset.index);if(action==="toggle-admin")toggleAdmin(btn.dataset.index);if(action==="delete-admin")deleteAdmin(btn.dataset.index);if(action==="export-site-pins")exportSitePins();if(action==="export-analytics")exportAnalytics();if(action==="export-audit")exportAudit()});
   app.addEventListener("input",e=>{if(["pinInput","staffPin","adminPin","newStaffPin","newAdminPin","editSitePin"].includes(e.target.id))e.target.value=pin(e.target.value)});
 
   function setupPWA(){
@@ -447,7 +567,7 @@ function exportAudit(){const rows=state.audit.map(a=>[a.at,a.actor,a.action,a.de
     }
   }
 
-  setupPWA();renderHome();
+  setupPWA();if(restoreSession())render();else renderHome();
 })();
 </script>
 </body>
