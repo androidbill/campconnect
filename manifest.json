@@ -2,15 +2,10 @@
   "id": "/CampConnect/",
   "name": "CampConnect",
   "short_name": "CampConnect",
-  "description": "Mobile-first campground service requests for campers, staff, and admins.",
+  "description": "Multi-campground service request PWA.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "display_override": [
-    "standalone",
-    "minimal-ui",
-    "browser"
-  ],
   "orientation": "portrait",
   "background_color": "#f5faf6",
   "theme_color": "#0f3d2e",
