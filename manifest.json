@@ -1,19 +1,37 @@
 {
+  "id": "/CampConnect/",
   "name": "CampConnect",
   "short_name": "CampConnect",
-  "description": "Mobile-first campground service request app for campers, staff, and admins.",
-  "start_url": "./index.html",
+  "description": "Mobile-first campground service requests for campers, staff, and admins.",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
   "orientation": "portrait",
   "background_color": "#f5faf6",
   "theme_color": "#0f3d2e",
   "icons": [
     {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

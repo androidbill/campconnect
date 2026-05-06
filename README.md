@@ -1,28 +1,21 @@
-# CampConnect PWA
+# CampConnect installable PWA
 
-Files:
-- `index.html`
-- `manifest.json`
-- `service-worker.js`
-- `icon.svg`
+Upload the contents of this folder to GitHub Pages.
 
-## Test locally
-A service worker will not run when opening `index.html` directly from Files/Downloads.
-Use a local web server instead:
+Required files:
+- index.html
+- manifest.json
+- service-worker.js
+- icons/icon-192.png
+- icons/icon-512.png
+- icons/maskable-512.png
 
-```bash
-python -m http.server 8080
-```
+## GitHub Pages
+Put these files at the root of your Pages branch/repo. Open the HTTPS Pages URL.
 
-Then open:
+Android Chrome:
+- wait 10-30 seconds and interact with the app
+- menu ⋮ should show Install app
 
-```text
-http://localhost:8080
-```
-
-## Deploy
-Upload this folder to Netlify, Vercel, GitHub Pages, or any HTTPS web host.
-
-## Install
-- Android Chrome: open HTTPS URL, use Install App or Add to Home Screen.
-- iPhone Safari: open HTTPS URL, Share → Add to Home Screen.
+iPhone Safari:
+- Share → Add to Home Screen

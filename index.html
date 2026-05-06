@@ -7,9 +7,12 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="CampConnect">
 <title>CampConnect</title>
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.svg">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+
+
+
 <style>
 :root{--pine:#0f3d2e;--pine2:#176f50;--bg:#f5faf6;--card:#fffef9;--ink:#10221b;--muted:#66756e;--line:#dbe8df;--danger:#d9485f;--good:#0f9f6e;--shadow:0 16px 38px rgba(16,34,27,.12)}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top left,#e2f8eb,#f5faf6 42%,#fff6e3);color:var(--ink)}button,input,textarea{font:inherit}
@@ -567,13 +570,8 @@ function exportAudit(){const rows=state.audit.map(a=>[a.at,a.actor,a.action,a.de
   app.addEventListener("input",e=>{if(["pinInput","staffPin","adminPin","newStaffPin","newAdminPin","editSitePin"].includes(e.target.id))e.target.value=pin(e.target.value)});
 
   function setupPWA(){
-    const isPreviewSandbox =
-      location.hostname.includes("web-sandbox") ||
-      location.hostname.includes("oaiusercontent") ||
-      location.protocol === "file:";
-
-    if("serviceWorker" in navigator && !isPreviewSandbox){
-      navigator.serviceWorker.register("service-worker.js").catch(()=>{});
+    if("serviceWorker" in navigator && location.protocol !== "file:"){
+      navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
     }
 
     let deferredPrompt = null;
