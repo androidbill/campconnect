@@ -13,7 +13,7 @@
 <style>
 :root{--pine:#0f3d2e;--pine2:#176f50;--bg:#f5faf6;--card:#fffef9;--ink:#10221b;--muted:#66756e;--line:#dbe8df;--danger:#d9485f;--good:#0f9f6e;--warn:#d9922e;--shadow:0 8px 20px rgba(16,34,27,.08)}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#f5faf6;color:var(--ink);font-size:14px}button,input,textarea,select{font:inherit}
-.topbar{position:sticky;top:0;z-index:20;padding:8px 10px;background:rgba(245,250,246,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.shell{max-width:1080px;margin:auto}.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{display:flex;gap:9px;align-items:center}.logo{width:36px;height:36px;border-radius:13px;background:linear-gradient(135deg,var(--pine),#32a66f);display:grid;place-items:center;color:white;font-size:19px}.brand h1{font-size:17px;margin:0;line-height:1}.brand p{margin:2px 0 0;color:var(--muted);font-size:11px}
+.topbar{position:sticky;top:0;z-index:20;padding:8px 10px;background:rgba(245,250,246,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.shell{max-width:1080px;margin:auto}.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{display:flex;gap:9px;align-items:center}.logo{width:36px;height:36px;border-radius:13px;background:linear-gradient(135deg,var(--pine),#32a66f);display:grid;place-items:center;color:white;font-size:19px}.brand h1{font-size:17px;margin:0;line-height:1}.brand p{margin:2px 0 0;color:var(--muted);font-size:11px}.topActions{display:flex;align-items:center;gap:6px;position:relative}.menuBtn{width:40px;min-width:40px;padding:8px 0;font-size:18px;line-height:1}.appMenu{position:absolute;right:0;top:46px;width:190px;background:white;border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:var(--shadow);z-index:35}.appMenu button{width:100%;background:white;color:var(--ink);box-shadow:none;text-align:left;border-radius:10px;font-weight:800}.modalShade{position:fixed;inset:0;background:rgba(16,34,27,.35);z-index:60;display:grid;place-items:center;padding:18px}.modal{width:min(360px,100%);background:white;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
 main{padding:10px 10px 72px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:var(--shadow);margin-bottom:10px}.card h3{font-size:15px;margin:0 0 8px}.grid{display:grid;gap:10px}.grid2{display:grid;gap:10px}.field{display:grid;gap:4px}label{font-size:10px;font-weight:900;color:#3f554b;text-transform:uppercase;letter-spacing:.045em}
 input,textarea,select{width:100%;border:1px solid var(--line);background:white;border-radius:13px;padding:10px;color:var(--ink);outline:none;font-size:14px}textarea{min-height:64px;resize:vertical}
 select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230f3d2e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;font-weight:700}
@@ -29,14 +29,15 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 </style>
 </head>
 <body>
-<header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel">Multi-Campground</p></div></div><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button></div></header>
+<header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel">Multi-Campground</p></div></div><div class="topActions"><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button><button id="menuBtn" class="btn2 menuBtn" aria-label="Menu">...</button><div id="appMenu" class="appMenu hidden"><button data-action="share-app">Share the App</button><button data-action="about-app">About</button></div></div></div></header>
 <main class="shell"><div id="app"></div></main>
 <div id="toast" class="toast"></div>
+<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.5.01</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
 <div id="installBar" class="installBar"><p>Install CampConnect for quick access.</p><button id="installBtn">Install</button><button id="dismissInstall">Later</button></div>
 <script>
 (function(){
 const STORE="campconnect_multi_campground_v1", SESSION="campconnect_multi_session_v1";
-const app=document.getElementById("app"), topAction=document.getElementById("topAction"), toastEl=document.getElementById("toast"), campLabel=document.getElementById("campLabel");
+const app=document.getElementById("app"), topAction=document.getElementById("topAction"), menuBtn=document.getElementById("menuBtn"), appMenu=document.getElementById("appMenu"), aboutModal=document.getElementById("aboutModal"), toastEl=document.getElementById("toast"), campLabel=document.getElementById("campLabel");
 let state=load(), role="home", actor=null, campgroundId=null, selectedService="", camperTab="request", staffTab="queue", staffRequestId=null, adminTab="sites", ownerTab="campgrounds", analyticsDayOffset=0, deferredPrompt=null;
 
 function id(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
@@ -48,6 +49,10 @@ function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&l
 function q(x){return document.getElementById(x)}
 function toast(t){toastEl.textContent=t;toastEl.classList.add("show");setTimeout(()=>toastEl.classList.remove("show"),2500)}
 function scrollTopNow(){window.scrollTo({top:0,left:0,behavior:"instant"});document.documentElement.scrollTop=0;document.body.scrollTop=0}
+function closeMenu(){appMenu.classList.add("hidden")}
+async function shareApp(){closeMenu();let url=location.href,title="CampConnect",text="CampConnect campground service request app";try{if(navigator.share){await navigator.share({title,text,url});return}if(navigator.clipboard){await navigator.clipboard.writeText(url);toast("App link copied");return}}catch(e){if(e?.name==="AbortError")return}toast("Share is not available here.")}
+function showAbout(){closeMenu();aboutModal.classList.remove("hidden")}
+function closeAbout(){aboutModal.classList.add("hidden")}
 
 function randomPin(used){let p="",g=0;do{p=String(Math.floor(1000+Math.random()*9000));g++}while(used.has(p)&&g<10000);used.add(p);return p}
 function makeCampground(name,siteCount=400){
@@ -68,6 +73,10 @@ function openRequests(cg=getCg()){return cg?cg.requests.filter(r=>r.status==="op
 function audit(action,details){let cg=getCg();if(!cg)return;cg.audit.unshift({id:id(),at:now(),actor:actor?.username||actor?.name||"System",action,details});save()}
 function setRole(r,a=null,cgId=null){role=r;actor=a;campgroundId=cgId;selectedService="";staffRequestId=null;if(role==="camper")camperTab="request";topAction.classList.toggle("hidden",role==="home"||role==="camper");if(role==="home")clearSession();else saveSession();render();scrollTopNow()}
 topAction.onclick=()=>setRole("home");
+menuBtn.onclick=e=>{e.stopPropagation();appMenu.classList.toggle("hidden")};
+appMenu.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="share-app")shareApp();if(a==="about-app")showAbout()});
+aboutModal.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="close-about")closeAbout()});
+document.addEventListener("click",e=>{if(!e.target.closest(".topActions"))closeMenu();if(e.target===aboutModal)closeAbout()});
 
 function cgOptions(){return state.campgrounds.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}
 function updateLabel(){let cg=getCg();campLabel.textContent=role==="home"||role==="owner"?"Multi-Campground":(cg?cg.name:"CampConnect")}
