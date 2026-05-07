@@ -32,7 +32,7 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 <header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel"></p></div></div><div class="topActions"><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button><button id="menuBtn" class="btn2 menuBtn" aria-label="Menu"><span class="menuDots" aria-hidden="true"></span></button><div id="appMenu" class="appMenu hidden"><button data-action="owner-login-modal">Owner Login</button><button data-action="share-app">Share the App</button><button data-action="about-app">About</button></div></div></div></header>
 <main class="shell"><div id="app"></div></main>
 <div id="toast" class="toast"></div>
-<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.07.20</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
+<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.07.21</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
 <div id="ownerLoginModal" class="modalShade hidden"><div class="modal grid"><h3>Owner Login</h3><div class="field"><label>Owner Username</label><input id="ownerUser" placeholder="Enter owner username"></div><div class="field"><label>Owner PIN</label><input id="ownerPin" inputmode="numeric" maxlength="4" placeholder="Enter owner PIN"></div><button class="btn2" data-action="owner-login">Owner Login</button><button class="btn2" data-action="close-owner-login">Close</button></div></div>
 <div id="iconModal" class="modalShade hidden"><div class="modal grid"><h3>Choose Icon</h3><div id="iconChoices" class="iconPicker"></div><button class="btn2" data-action="close-icon-picker">Close</button></div></div>
 <div id="installBar" class="installBar"><p>Install CampConnect for quick access.</p><button id="installBtn">Install</button><button id="dismissInstall">Later</button></div>
@@ -113,8 +113,29 @@ function makeCampground(name,siteCount=400){
   return {id:id(),name,siteCount,announcement:"",services:defaultServices(),campers,requests:[],staff:name==="Dickson RV Resort"?[{username:"staff",pin:"2468",active:true}]:[],admins:name==="Dickson RV Resort"?[{username:"admin",pin:"1977",active:true}]:[],audit:[{id:id(),at:now(),actor:"System",action:"Created campground",details:name}]};
 }
 function seed(){return {owner:{username:"owner",pin:"0000"},owners:[{username:"owner",pin:"0000",active:true}],ownerAudit:[{id:id(),at:now(),actor:"System",action:"Created owner audit",details:"Initial setup"}],campgrounds:[makeCampground("Dickson RV Resort",400)]}}
-function ensureData(d){if(!d||!Array.isArray(d.campgrounds))return seed();if(!Array.isArray(d.ownerAudit))d.ownerAudit=[];if(!d.owner)d.owner={username:"owner",pin:"0000"};if(!Array.isArray(d.owners)||!d.owners.length)d.owners=[{username:d.owner.username||"owner",pin:d.owner.pin||"0000",active:true}];d.owners=d.owners.map(o=>({username:o.username||"owner",pin:pin(o.pin)||"0000",active:o.active!==false}));d.owner=d.owners[0];d.campgrounds.forEach(c=>{c.announcement=String(c.announcement||"");c.services=Array.isArray(c.services)&&c.services.length?c.services:defaultServices();c.services=c.services.map(s=>({id:s.id||id(),name:String(s.name||"Service"),icon:String(s.icon||"🔧"),active:s.active!==false}));c.campers=Array.isArray(c.campers)?c.campers:[];c.campers=c.campers.map(x=>({...x,serviceDisabled:x.serviceDisabled===true}));c.requests=Array.isArray(c.requests)?c.requests:[];c.staff=Array.isArray(c.staff)?c.staff:[];c.admins=Array.isArray(c.admins)?c.admins:[];c.audit=Array.isArray(c.audit)?c.audit:[];c.siteCount=c.siteCount||400;const used=new Set(c.campers.map(x=>x.pin).filter(Boolean));for(let i=1;i<=c.siteCount;i++)if(!c.campers.some(x=>x.site===i))c.campers.push({site:i,name:"Site "+i,pin:randomPin(used),active:true,serviceDisabled:false});c.campers.sort((a,b)=>a.site-b.site)});ensureMetaEverywhere();return d}
-function load(){try{let d=ensureData(JSON.parse(localStorage.getItem(STORE)));ensureMetaEverywhere();return d}catch{let d=seed();state=d;ensureMetaEverywhere();return d}}
+function ensureMetaForData(d){
+  if(!d)return d;
+  (d.owners||[]).forEach(ensureRecordMeta);
+  (d.campgrounds||[]).forEach(c=>{
+    ensureRecordMeta(c);
+    (c.campers||[]).forEach(ensureRecordMeta);
+    (c.staff||[]).forEach(ensureRecordMeta);
+    (c.admins||[]).forEach(ensureRecordMeta);
+    (c.requests||[]).forEach(ensureRecordMeta);
+    (c.services||[]).forEach(ensureRecordMeta);
+    (c.audit||[]).forEach(ensureRecordMeta);
+  });
+  (d.ownerAudit||[]).forEach(ensureRecordMeta);
+  return d;
+}
+function ensureData(d){if(!d||!Array.isArray(d.campgrounds))return seed();if(!Array.isArray(d.ownerAudit))d.ownerAudit=[];if(!d.owner)d.owner={username:"owner",pin:"0000"};if(!Array.isArray(d.owners)||!d.owners.length)d.owners=[{username:d.owner.username||"owner",pin:d.owner.pin||"0000",active:true}];d.owners=d.owners.map(o=>({username:o.username||"owner",pin:pin(o.pin)||"0000",active:o.active!==false}));d.owner=d.owners[0];d.campgrounds.forEach(c=>{c.announcement=String(c.announcement||"");c.services=Array.isArray(c.services)&&c.services.length?c.services:defaultServices();c.services=c.services.map(s=>({id:s.id||id(),name:String(s.name||"Service"),icon:String(s.icon||"🔧"),active:s.active!==false}));c.campers=Array.isArray(c.campers)?c.campers:[];c.campers=c.campers.map(x=>({...x,serviceDisabled:x.serviceDisabled===true}));c.requests=Array.isArray(c.requests)?c.requests:[];c.staff=Array.isArray(c.staff)?c.staff:[];c.admins=Array.isArray(c.admins)?c.admins:[];c.audit=Array.isArray(c.audit)?c.audit:[];c.siteCount=c.siteCount||400;const used=new Set(c.campers.map(x=>x.pin).filter(Boolean));for(let i=1;i<=c.siteCount;i++)if(!c.campers.some(x=>x.site===i))c.campers.push({site:i,name:"Site "+i,pin:randomPin(used),active:true,serviceDisabled:false});c.campers.sort((a,b)=>a.site-b.site)});return ensureMetaForData(d)}
+function load(){
+  try{
+    return ensureData(JSON.parse(localStorage.getItem(STORE)));
+  }catch{
+    return ensureData(seed());
+  }
+}
 function save(){
   localStorage.setItem(STORE,JSON.stringify(state));
   saveSession();
