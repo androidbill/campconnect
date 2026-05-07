@@ -32,7 +32,7 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 <header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel"></p></div></div><div class="topActions"><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button><button id="menuBtn" class="btn2 menuBtn" aria-label="Menu"><span class="menuDots" aria-hidden="true"></span></button><div id="appMenu" class="appMenu hidden"><button data-action="owner-login-modal">Owner Login</button><button data-action="share-app">Share the App</button><button data-action="about-app">About</button></div></div></div></header>
 <main class="shell"><div id="app"></div></main>
 <div id="toast" class="toast"></div>
-<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.07.18</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
+<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.07.19</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
 <div id="ownerLoginModal" class="modalShade hidden"><div class="modal grid"><h3>Owner Login</h3><div class="field"><label>Owner Username</label><input id="ownerUser" placeholder="Enter owner username"></div><div class="field"><label>Owner PIN</label><input id="ownerPin" inputmode="numeric" maxlength="4" placeholder="Enter owner PIN"></div><button class="btn2" data-action="owner-login">Owner Login</button><button class="btn2" data-action="close-owner-login">Close</button></div></div>
 <div id="iconModal" class="modalShade hidden"><div class="modal grid"><h3>Choose Icon</h3><div id="iconChoices" class="iconPicker"></div><button class="btn2" data-action="close-icon-picker">Close</button></div></div>
 <div id="installBar" class="installBar"><p>Install CampConnect for quick access.</p><button id="installBtn">Install</button><button id="dismissInstall">Later</button></div>
@@ -45,7 +45,7 @@ const STORE="campconnect_multi_campground_v1", SESSION="campconnect_multi_sessio
 const firebaseConfig={apiKey:"AIzaSyBDWanyfiw80JzYBgqrFqWfM8hyGlcW0ck",authDomain:"campconnect-5cff2.firebaseapp.com",projectId:"campconnect-5cff2",storageBucket:"campconnect-5cff2.firebasestorage.app",messagingSenderId:"988926862629",appId:"1:988926862629:web:0515d52df29aaa4b8b26cc",measurementId:"G-T0Q7CBJJ21"};
 const app=document.getElementById("app"), topAction=document.getElementById("topAction"), menuBtn=document.getElementById("menuBtn"), appMenu=document.getElementById("appMenu"), aboutModal=document.getElementById("aboutModal"), ownerLoginModal=document.getElementById("ownerLoginModal"), iconModal=document.getElementById("iconModal"), iconChoices=document.getElementById("iconChoices"), toastEl=document.getElementById("toast"), campLabel=document.getElementById("campLabel");
 let state=load(), role="home", actor=null, campgroundId=null, selectedService="", camperTab="request", staffTab="queue", staffRequestId=null, adminTab="sites", ownerTab="campgrounds", analyticsDayOffset=0, deferredPrompt=null;
-let db=null, applyingRemote=false, firebaseReady=false, remoteSaveTimer=null, iconPickerTargetId="";
+let db=null, applyingRemote=false, firebaseReady=false, remoteLoaded=false, remoteWriteEnabled=false, remoteSaveTimer=null, iconPickerTargetId="";
 
 function id(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
 function pin(v){return String(v||"").replace(/\D/g,"").slice(0,4)}
@@ -81,12 +81,68 @@ function makeCampground(name,siteCount=400){
 function seed(){return {owner:{username:"owner",pin:"0000"},owners:[{username:"owner",pin:"0000",active:true}],ownerAudit:[{id:id(),at:now(),actor:"System",action:"Created owner audit",details:"Initial setup"}],campgrounds:[makeCampground("Dickson RV Resort",400)]}}
 function ensureData(d){if(!d||!Array.isArray(d.campgrounds))return seed();if(!Array.isArray(d.ownerAudit))d.ownerAudit=[];if(!d.owner)d.owner={username:"owner",pin:"0000"};if(!Array.isArray(d.owners)||!d.owners.length)d.owners=[{username:d.owner.username||"owner",pin:d.owner.pin||"0000",active:true}];d.owners=d.owners.map(o=>({username:o.username||"owner",pin:pin(o.pin)||"0000",active:o.active!==false}));d.owner=d.owners[0];d.campgrounds.forEach(c=>{c.announcement=String(c.announcement||"");c.services=Array.isArray(c.services)&&c.services.length?c.services:defaultServices();c.services=c.services.map(s=>({id:s.id||id(),name:String(s.name||"Service"),icon:String(s.icon||"🔧"),active:s.active!==false}));c.campers=Array.isArray(c.campers)?c.campers:[];c.campers=c.campers.map(x=>({...x,serviceDisabled:x.serviceDisabled===true}));c.requests=Array.isArray(c.requests)?c.requests:[];c.staff=Array.isArray(c.staff)?c.staff:[];c.admins=Array.isArray(c.admins)?c.admins:[];c.audit=Array.isArray(c.audit)?c.audit:[];c.siteCount=c.siteCount||400;const used=new Set(c.campers.map(x=>x.pin).filter(Boolean));for(let i=1;i<=c.siteCount;i++)if(!c.campers.some(x=>x.site===i))c.campers.push({site:i,name:"Site "+i,pin:randomPin(used),active:true,serviceDisabled:false});c.campers.sort((a,b)=>a.site-b.site)});return d}
 function load(){try{return ensureData(JSON.parse(localStorage.getItem(STORE)))}catch{return seed()}}
-function save(){localStorage.setItem(STORE,JSON.stringify(state));saveSession();queueRemoteSave()}
+function save(){
+  localStorage.setItem(STORE,JSON.stringify(state));
+  saveSession();
+  // Firebase writes are blocked until an existing remote document has loaded.
+  // This prevents seed() or localStorage from recreating/overwriting the real database.
+  queueRemoteSave();
+}
 function saveLocalOnly(){localStorage.setItem(STORE,JSON.stringify(state));saveSession()}
 function remoteDoc(){return db.collection(FIRESTORE_DOC[0]).doc(FIRESTORE_DOC[1])}
-function queueRemoteSave(){if(!firebaseReady||applyingRemote||!db)return;clearTimeout(remoteSaveTimer);remoteSaveTimer=setTimeout(pushRemoteState,350)}
-function pushRemoteState(){if(!firebaseReady||applyingRemote||!db)return;remoteDoc().set({state,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).catch(()=>toast("Firebase save failed. Using this device cache."))}
-async function startFirebaseSync(){if(!window.firebase)return toast("Firebase did not load. Using this device cache.");try{firebase.initializeApp(firebaseConfig);try{await firebase.firestore().enablePersistence({synchronizeTabs:true})}catch{}db=firebase.firestore();await firebase.auth().signInAnonymously();firebaseReady=true;remoteDoc().onSnapshot(snap=>{if(snap.exists&&snap.data()?.state){applyingRemote=true;state=ensureData(snap.data().state);saveLocalOnly();applyingRemote=false;if(!getCg()&&state.campgrounds.length)campgroundId=state.campgrounds[0].id;if(role!=="home"&&!restoreSession())setRole("home");else render()}else{pushRemoteState()}},()=>toast("Firebase sync paused. Using this device cache."))}catch(e){toast("Firebase sync failed. Using this device cache.")}}
+function queueRemoteSave(){
+  if(!firebaseReady||!remoteLoaded||!remoteWriteEnabled||applyingRemote||!db)return;
+  clearTimeout(remoteSaveTimer);
+  remoteSaveTimer=setTimeout(pushRemoteState,350);
+}
+function pushRemoteState(){
+  if(!firebaseReady||!remoteLoaded||!remoteWriteEnabled||applyingRemote||!db)return;
+  remoteDoc().set({state,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})
+    .catch(()=>toast("Firebase save failed. Using this device cache."));
+}
+async function startFirebaseSync(){
+  if(!window.firebase)return toast("Firebase did not load. Using this device cache.");
+
+  try{
+    firebase.initializeApp(firebaseConfig);
+
+    try{
+      await firebase.firestore().enablePersistence({synchronizeTabs:true});
+    }catch{}
+
+    db=firebase.firestore();
+    await firebase.auth().signInAnonymously();
+    firebaseReady=true;
+
+    remoteDoc().onSnapshot(snap=>{
+      if(snap.exists&&snap.data()?.state){
+        applyingRemote=true;
+        remoteLoaded=true;
+        remoteWriteEnabled=true;
+
+        state=ensureData(snap.data().state);
+        saveLocalOnly();
+
+        applyingRemote=false;
+
+        if(!getCg()&&state.campgrounds.length)campgroundId=state.campgrounds[0].id;
+
+        if(role!=="home"&&!restoreSession())setRole("home");
+        else render();
+
+        return;
+      }
+
+      // SAFETY: Never create or overwrite Firebase from seed() or localStorage.
+      // If the shared document is missing, keep local data local and require manual recovery/setup.
+      remoteLoaded=false;
+      remoteWriteEnabled=false;
+      toast("Firebase database document is missing. Remote writes are disabled to protect data.");
+    },()=>toast("Firebase sync paused. Using this device cache."));
+  }catch(e){
+    toast("Firebase sync failed. Using this device cache.");
+  }
+}
 function saveSession(){try{sessionStorage.setItem(SESSION,JSON.stringify({role,actor,campgroundId,selectedService,camperTab,staffTab,staffRequestId,adminTab,ownerTab,analyticsDayOffset}))}catch{}}
 function clearSession(){try{sessionStorage.removeItem(SESSION)}catch{}}
 function restoreSession(){try{let s=JSON.parse(sessionStorage.getItem(SESSION)||"null");if(!s||s.role==="home")return false;role=s.role;campgroundId=s.campgroundId;selectedService=s.selectedService||"";camperTab=s.camperTab||"request";staffTab=s.staffTab||"queue";staffRequestId=s.staffRequestId||null;adminTab=s.adminTab||"sites";ownerTab=s.ownerTab||"campgrounds";analyticsDayOffset=s.analyticsDayOffset||0;if(role==="owner"){actor=state.owners.find(x=>x.active&&norm(x.username)===norm(s.actor?.username))||state.owners.find(x=>x.active);return !!actor}let cg=getCg();if(!cg)return false;if(role==="camper")actor=cg.campers.find(c=>c.site===s.actor?.site);if(role==="staff")actor=cg.staff.find(x=>norm(x.username)===norm(s.actor?.username));if(role==="admin")actor=cg.admins.find(x=>norm(x.username)===norm(s.actor?.username));return !!actor}catch{return false}}
