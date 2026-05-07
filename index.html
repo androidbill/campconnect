@@ -32,7 +32,7 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 <header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel">Multi-Campground</p></div></div><div class="topActions"><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button><button id="menuBtn" class="btn2 menuBtn" aria-label="Menu">...</button><div id="appMenu" class="appMenu hidden"><button data-action="share-app">Share the App</button><button data-action="about-app">About</button></div></div></div></header>
 <main class="shell"><div id="app"></div></main>
 <div id="toast" class="toast"></div>
-<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.06.03</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
+<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.06.04</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
 <div id="installBar" class="installBar"><p>Install CampConnect for quick access.</p><button id="installBtn">Install</button><button id="dismissInstall">Later</button></div>
 <script>
 (function(){
@@ -71,7 +71,7 @@ function restoreSession(){try{let s=JSON.parse(sessionStorage.getItem(SESSION)||
 function getCg(){return state.campgrounds.find(c=>c.id===campgroundId)}
 function openRequests(cg=getCg()){return cg?cg.requests.filter(r=>r.status==="open"):[]}
 function audit(action,details){let cg=getCg();if(!cg)return;cg.audit.unshift({id:id(),at:now(),actor:actor?.username||actor?.name||"System",action,details});save()}
-function setRole(r,a=null,cgId=null){role=r;actor=a;campgroundId=cgId;selectedService="";staffRequestId=null;if(role==="camper")camperTab="request";topAction.classList.toggle("hidden",role==="home"||role==="camper");if(role==="home")clearSession();else saveSession();render();scrollTopNow()}
+function setRole(r,a=null,cgId=null){role=r;actor=a;campgroundId=cgId;selectedService="";staffRequestId=null;if(role==="camper")camperTab="request";topAction.classList.toggle("hidden",role==="home");if(role==="home")clearSession();else saveSession();render();scrollTopNow()}
 topAction.onclick=()=>setRole("home");
 menuBtn.onclick=e=>{e.stopPropagation();appMenu.classList.toggle("hidden")};
 appMenu.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="share-app")shareApp();if(a==="about-app")showAbout()});
@@ -82,7 +82,7 @@ function cgOptions(){return state.campgrounds.map(c=>`<option value="${c.id}">${
 function announcementHtml(cg){return`<div class="soft"><b>Announcement</b><p class="tiny" style="white-space:pre-wrap;margin-bottom:0">${cg?.announcement?esc(cg.announcement):"No announcement."}</p></div>`}
 function updateLoginAnnouncement(){let wrap=q("loginAnnouncement");if(wrap)wrap.innerHTML=announcementHtml(selectedLoginCg())}
 function updateLabel(){let cg=getCg();campLabel.textContent=role==="home"||role==="owner"?"Multi-Campground":(cg?cg.name:"CampConnect")}
-function render(){updateLabel();if(role==="home")renderHome();if(role==="camper")renderCamper();if(role==="staff")renderStaff();if(role==="admin")renderAdmin();if(role==="owner")renderOwner()}
+function render(){topAction.classList.toggle("hidden",role==="home");updateLabel();if(role==="home")renderHome();if(role==="camper")renderCamper();if(role==="staff")renderStaff();if(role==="admin")renderAdmin();if(role==="owner")renderOwner()}
 
 function renderHome(message=""){
   let firstCg=state.campgrounds[0];
