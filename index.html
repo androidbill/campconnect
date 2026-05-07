@@ -32,7 +32,7 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 <header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel">Multi-Campground</p></div></div><div class="topActions"><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button><button id="menuBtn" class="btn2 menuBtn" aria-label="Menu">...</button><div id="appMenu" class="appMenu hidden"><button data-action="share-app">Share the App</button><button data-action="about-app">About</button></div></div></div></header>
 <main class="shell"><div id="app"></div></main>
 <div id="toast" class="toast"></div>
-<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.06.02</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
+<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><h3>CampConnect</h3><p class="tiny">ver: 2026.05.06.03</p><p class="tiny">Created by: Bill Parsons</p><button class="btn2" data-action="close-about">Close</button></div></div>
 <div id="installBar" class="installBar"><p>Install CampConnect for quick access.</p><button id="installBtn">Install</button><button id="dismissInstall">Later</button></div>
 <script>
 (function(){
@@ -88,13 +88,13 @@ function renderHome(message=""){
   let firstCg=state.campgrounds[0];
   app.innerHTML=`<section class="card grid">
     <div id="campSelectWrap" class="field"><label>Campground</label><select id="loginCampground">${cgOptions()}</select></div>
-    <div id="loginAnnouncement">${announcementHtml(firstCg)}</div>
     <div class="field"><label>Login Type</label><select id="roleSelect"><option value="camper">Camper</option><option value="staff">Staff</option><option value="admin">Admin</option><option value="owner">Owner</option></select></div>
     <div id="camperPanel" class="loginPanel"><div class="field"><label>Site Number</label><input id="siteInput" inputmode="numeric" placeholder="Enter site number"></div><div class="field"><label>PIN</label><input id="pinInput" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div><button data-action="camper-login">Login</button></div>
     <div id="staffPanel" class="loginPanel hidden"><div class="field"><label>Username</label><input id="staffUser" placeholder="Enter username"></div><div class="field"><label>PIN</label><input id="staffPin" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div><button class="btn2" data-action="staff-login">Login</button></div>
     <div id="adminPanel" class="loginPanel hidden"><div class="field"><label>Username</label><input id="adminUser" placeholder="Enter username"></div><div class="field"><label>PIN</label><input id="adminPin" inputmode="numeric" maxlength="4" placeholder="Enter 4 digit PIN"></div><button class="btn2" data-action="admin-login">Login</button></div>
     <div id="ownerPanel" class="loginPanel hidden"><div class="field"><label>Owner Username</label><input id="ownerUser" placeholder="Enter owner username"></div><div class="field"><label>Owner PIN</label><input id="ownerPin" inputmode="numeric" maxlength="4" placeholder="Enter owner PIN"></div><button class="btn2" data-action="owner-login">Owner Login</button><p class="tiny">Default owner: owner / 0000</p></div>
     ${message?`<div class="soft">${esc(message)}</div>`:""}
+    <div id="loginAnnouncement">${announcementHtml(firstCg)}</div>
   </section>`;
   q("roleSelect").onchange=()=>{let v=q("roleSelect").value;["camper","staff","admin","owner"].forEach(x=>q(x+"Panel").classList.toggle("hidden",v!==x));q("campSelectWrap").classList.toggle("hidden",v==="owner")};
   q("loginCampground").onchange=updateLoginAnnouncement;
