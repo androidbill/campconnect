@@ -32,7 +32,7 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 <header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel"></p></div></div><div class="topActions"><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button><button id="menuBtn" class="btn2 menuBtn" aria-label="Menu"><span class="menuDots" aria-hidden="true"></span></button><div id="appMenu" class="appMenu hidden"><button data-action="owner-login-modal">Owner Login</button><button data-action="share-app">Share the App</button><button data-action="about-app">About</button></div></div></div></header>
 <main class="shell"><div id="app"></div></main>
 <div id="toast" class="toast"></div>
-<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><div class="aboutBrand"><img class="aboutLogo" src="./icons/rock-app-team-logo.png" alt="The Rock-App Team logo"><h3>CampConnect</h3><p class="makerName">The Rock-App Team</p><p class="tiny">ver: 2026.05.08.03</p></div><button class="btn2" data-action="close-about">Close</button></div></div>
+<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><div class="aboutBrand"><img class="aboutLogo" src="./icons/rock-app-team-logo.png" alt="The Rock-App Team logo"><h3>CampConnect</h3><p class="makerName">The Rock-App Team</p><p class="tiny">ver: 2026.05.08.04</p></div><button class="btn2" data-action="close-about">Close</button></div></div>
 <div id="ownerLoginModal" class="modalShade hidden"><div class="modal grid"><h3>Owner Login</h3><div class="field"><label>Owner Username</label><input id="ownerUser" placeholder="Enter owner username"></div><div class="field"><label>Owner PIN</label><input id="ownerPin" inputmode="numeric" maxlength="4" placeholder="Enter owner PIN"></div><button class="btn2" data-action="owner-login">Owner Login</button><button class="btn2" data-action="close-owner-login">Close</button></div></div>
 <div id="iconModal" class="modalShade hidden"><div class="modal grid"><h3>Choose Icon</h3><div id="iconChoices" class="iconPicker"></div><button class="btn2" data-action="close-icon-picker">Close</button></div></div>
 <div id="installBar" class="installBar"><p>Install CampConnect for quick access.</p><button id="installBtn">Install</button><button id="dismissInstall">Later</button></div>
@@ -44,6 +44,9 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 const STORE="campconnect_multi_campground_v1", SESSION="campconnect_multi_session_v1", FIRESTORE_ROOT="campconnectV2";
 const firebaseConfig={apiKey:"AIzaSyBDWanyfiw80JzYBgqrFqWfM8hyGlcW0ck",authDomain:"campconnect-5cff2.firebaseapp.com",projectId:"campconnect-5cff2",storageBucket:"campconnect-5cff2.firebasestorage.app",messagingSenderId:"988926862629",appId:"1:988926862629:web:0515d52df29aaa4b8b26cc",measurementId:"G-T0Q7CBJJ21"};
 const app=document.getElementById("app"), topAction=document.getElementById("topAction"), menuBtn=document.getElementById("menuBtn"), appMenu=document.getElementById("appMenu"), aboutModal=document.getElementById("aboutModal"), ownerLoginModal=document.getElementById("ownerLoginModal"), iconModal=document.getElementById("iconModal"), iconChoices=document.getElementById("iconChoices"), toastEl=document.getElementById("toast"), campLabel=document.getElementById("campLabel");
+const DEFAULT_THEME={pine:"#0f3d2e",pine2:"#176f50",sky:"#d9edf5",bg:"#fbf3df",card:"#fffef8",ink:"#10221b",muted:"#66756e",line:"#eadfc8",danger:"#d9485f",good:"#0f9f6e",warn:"#d9922e"};
+function validHex(v){return /^#[0-9a-f]{6}$/i.test(String(v||""))}
+function normalizeTheme(t={}){let clean={};Object.keys(DEFAULT_THEME).forEach(k=>clean[k]=validHex(t[k])?t[k]:DEFAULT_THEME[k]);return clean}
 let state=load(), role="home", actor=null, campgroundId=null, selectedService="", camperTab="request", staffTab="queue", staffRequestId=null, adminTab="sites", ownerTab="campgrounds", analyticsDayOffset=0, deferredPrompt=null;
 let db=null, applyingRemote=false, firebaseReady=false, remoteLoaded=false, remoteWriteEnabled=false, remoteSaveTimer=null, iconPickerTargetId="", syncMode="collections";
 
@@ -105,9 +108,6 @@ function closeIconPicker(){iconModal.classList.add("hidden");iconPickerTargetId=
 
 function randomPin(used){let p="",g=0;do{p=String(Math.floor(1000+Math.random()*9000));g++}while(used.has(p)&&g<10000);used.add(p);return p}
 const SERVICE_ICONS=["💧","🔥","🪵","🍂","🗑️","🧊","⚡","🔧","🚿","🧺","🚽","🛠️","🧹","🚜","🛒","🚪","🔌","🪠"];
-const DEFAULT_THEME={pine:"#0f3d2e",pine2:"#176f50",sky:"#d9edf5",bg:"#fbf3df",card:"#fffef8",ink:"#10221b",muted:"#66756e",line:"#eadfc8",danger:"#d9485f",good:"#0f9f6e",warn:"#d9922e"};
-function validHex(v){return /^#[0-9a-f]{6}$/i.test(String(v||""))}
-function normalizeTheme(t={}){let clean={};Object.keys(DEFAULT_THEME).forEach(k=>clean[k]=validHex(t[k])?t[k]:DEFAULT_THEME[k]);return clean}
 function defaultServices(){return[["Water","💧"],["Propane","🔥"],["Firewood","🪵"],["Leaves","🍂"],["Trash","🗑️"],["Ice","🧊"],["Electric","⚡"],["Other","🔧"]].map(([name,icon],i)=>({id:id(),name,icon,active:true,sortOrder:i}))}
 function makeCampground(name,siteCount=400){
   const used=new Set(), campers=[];
@@ -449,7 +449,7 @@ app.addEventListener("click",e=>{let target=e.target.closest("[data-action]");if
 app.addEventListener("input",e=>{if(["pinInput","staffPin","adminPin","newOwnerPin","newStaffPin","newAdminPin","editSitePin","camperAccountPin","staffResetPin"].includes(e.target.id)||/^ownerPin\d+$/.test(e.target.id)||/^ownerAdminPin-/.test(e.target.id))e.target.value=pin(e.target.value)});
 ownerLoginModal.addEventListener("input",e=>{if(e.target.id==="ownerPin")e.target.value=pin(e.target.value)});
 function setupPWA(){if("serviceWorker"in navigator&&location.protocol!=="file:")navigator.serviceWorker.register("./service-worker.js").catch(()=>{});window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;document.getElementById("installBar").classList.add("show")});document.getElementById("installBtn").onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}document.getElementById("installBar").classList.remove("show")};document.getElementById("dismissInstall").onclick=()=>document.getElementById("installBar").classList.remove("show")}
-setupPWA();if(restoreSession())render();else renderHome();startFirebaseSync();
+setupPWA();if(restoreSession())render();else render();startFirebaseSync();
 })();
 </script>
 </body>
