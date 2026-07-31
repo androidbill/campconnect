@@ -32,9 +32,12 @@ service cloud.firestore {
     // Every write in the app goes through safeSetDoc(), which bumps version inside a
     // transaction. Requiring a strictly higher version keeps an out-of-date client
     // from overwriting fresher data.
+    // A document written by an older build may predate versioning entirely, and
+    // reading a field that is not there fails the rule instead of returning null.
+    // get('version', 0) treats those as version 0 so they stay writable.
     function movesForward() {
       return request.resource.data.version is number
-        && (resource == null || request.resource.data.version > resource.data.version);
+        && (resource == null || request.resource.data.version > resource.data.get('version', 0));
     }
 
     // /campconnectV2/{owners|campgrounds|ownerAudit}/items/{docId}
