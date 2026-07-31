@@ -23,7 +23,7 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 .requestList{display:grid;gap:4px}.requestRow{display:grid;grid-template-columns:38px minmax(0,1fr) minmax(58px,72px) 108px;gap:5px;align-items:center;min-height:46px;padding:5px 7px;border:1px solid var(--line);border-radius:10px;background:var(--card)}.requestRow .site b{font-size:16px}.requestRow .person{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.requestRow .svc{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.requestRow .actions{display:grid;grid-template-columns:52px 52px;gap:4px;justify-content:end}.requestRow .actions button{width:52px;height:32px;min-height:32px;padding:3px 2px;font-size:8px;line-height:1.05;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;white-space:normal;overflow-wrap:normal;word-break:normal;hyphens:none}.requestRow .actions button:disabled{opacity:1;cursor:default}.progressState{background:#bfdbfe!important;color:#123b6d!important}.completeState{background:#16a34a!important;color:white!important}
 .statGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stat{background:linear-gradient(180deg,#fff,#fff8ea);border:1px solid var(--line);border-radius:16px;padding:10px}.stat b{font-size:24px;color:var(--pine)}
 .toast{position:fixed;left:16px;right:16px;bottom:18px;z-index:50;background:#10221b;color:white;padding:12px 14px;border-radius:18px;display:none}.toast.show{display:block}
-.installBar{position:fixed;left:14px;right:14px;bottom:14px;z-index:40;background:rgba(16,34,27,.97);color:white;border-radius:20px;padding:11px;box-shadow:var(--shadow);display:none;align-items:center;gap:10px}.installBar.show{display:flex}.installBar p{margin:0;flex:1;font-size:12px;color:#dcfce7}.installBar button{width:auto;min-height:auto;padding:8px 10px;background:white;color:var(--pine)}.colorGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.colorField{display:grid;grid-template-columns:1fr 52px;gap:8px;align-items:center}.colorField input[type=color]{width:52px;height:40px;padding:2px;border-radius:10px}.announcementText{min-height:180px}.siteSummary{flex-wrap:wrap}.siteSummary>div{min-width:0}.siteActions{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:8px}.siteActions button{width:100%;white-space:normal;line-height:1.15;padding:9px 8px}.tabBadge{display:inline-grid;place-items:center;min-width:18px;height:18px;margin-left:4px;padding:0 5px;border-radius:999px;background:var(--danger);color:white;font-size:10px;line-height:1}.chatShell{display:grid;gap:10px}.chatFeed{display:grid;gap:8px;max-height:430px;overflow:auto;padding:4px}.chatBubble{max-width:86%;padding:10px 12px;border-radius:16px;border:1px solid var(--line);background:white;box-shadow:0 4px 12px rgba(75,50,20,.06)}.chatBubble.mine{justify-self:end;background:linear-gradient(135deg,var(--pine),var(--pine2));color:white;border-color:transparent}.chatBubble.mine .tiny{color:rgba(255,255,255,.82)}.chatMeta{display:flex;gap:6px;justify-content:space-between;align-items:center;margin-bottom:4px;font-weight:900;font-size:11px}.chatText{white-space:pre-wrap;word-break:break-word;margin:0}.chatComposer{position:sticky;bottom:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:var(--shadow)}
+.installBar{position:fixed;left:14px;right:14px;bottom:14px;z-index:40;background:rgba(16,34,27,.97);color:white;border-radius:20px;padding:11px;box-shadow:var(--shadow);display:none;align-items:center;gap:10px}.installBar.show{display:flex}.verFooter{text-align:center;color:var(--muted);font-size:11px;font-weight:700;padding:4px 0 10px}.installBar p{margin:0;flex:1;font-size:12px;color:#dcfce7}.installBar button{width:auto;min-height:auto;padding:8px 10px;background:white;color:var(--pine)}.colorGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.colorField{display:grid;grid-template-columns:1fr 52px;gap:8px;align-items:center}.colorField input[type=color]{width:52px;height:40px;padding:2px;border-radius:10px}.announcementText{min-height:180px}.siteSummary{flex-wrap:wrap}.siteSummary>div{min-width:0}.siteActions{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:8px}.siteActions button{width:100%;white-space:normal;line-height:1.15;padding:9px 8px}.tabBadge{display:inline-grid;place-items:center;min-width:18px;height:18px;margin-left:4px;padding:0 5px;border-radius:999px;background:var(--danger);color:white;font-size:10px;line-height:1}.chatShell{display:grid;gap:10px}.chatFeed{display:grid;gap:8px;max-height:430px;overflow:auto;padding:4px}.chatBubble{max-width:86%;padding:10px 12px;border-radius:16px;border:1px solid var(--line);background:white;box-shadow:0 4px 12px rgba(75,50,20,.06)}.chatBubble.mine{justify-self:end;background:linear-gradient(135deg,var(--pine),var(--pine2));color:white;border-color:transparent}.chatBubble.mine .tiny{color:rgba(255,255,255,.82)}.chatMeta{display:flex;gap:6px;justify-content:space-between;align-items:center;margin-bottom:4px;font-weight:900;font-size:11px}.chatText{white-space:pre-wrap;word-break:break-word;margin:0}.chatComposer{position:sticky;bottom:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:var(--shadow)}
 @media(min-width:700px){.grid2{grid-template-columns:1fr 1fr}.serviceGrid{grid-template-columns:repeat(4,1fr)}.statGrid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:520px){.tabs{grid-template-columns:repeat(2,1fr)}}
 </style>
@@ -32,18 +32,27 @@ button{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:
 <header class="topbar"><div class="shell toprow"><div class="brand"><div class="logo">🏕️</div><div><h1>CampConnect</h1><p id="campLabel"></p></div></div><div class="topActions"><button id="topAction" class="btn2 hidden" style="width:auto">Logout</button><button id="menuBtn" class="btn2 menuBtn" aria-label="Menu"><span class="menuDots" aria-hidden="true"></span></button><div id="appMenu" class="appMenu hidden"><button data-action="owner-login-modal">Maintenance</button><button data-action="share-app">Share the App</button><button data-action="about-app">About</button></div></div></div></header>
 <main class="shell"><div id="app"></div></main>
 <div id="toast" class="toast"></div>
-<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><div class="aboutBrand"><img class="aboutLogo" src="./icons/rock-app-team-logo.png" alt="The Rock-App Team logo"><h3>CampConnect</h3><p class="makerName">The Rock-App Team</p><p class="tiny">ver: 2026.05.08.11</p></div><button class="btn2" data-action="close-about">Close</button></div></div>
+<div id="aboutModal" class="modalShade hidden"><div class="modal grid"><div class="aboutBrand"><img class="aboutLogo" src="./icons/rock-app-team-logo.png" alt="The Rock-App Team logo"><h3>CampConnect</h3><p class="makerName">The Rock-App Team</p><p class="tiny">ver: <span id="aboutVersion"></span></p></div><button class="btn2" data-action="close-about">Close</button></div></div>
 <div id="ownerLoginModal" class="modalShade hidden"><div class="modal grid"><h3>Owner Login</h3><div class="field"><label>Owner Username</label><input id="ownerUser" placeholder="Enter owner username"></div><div class="field"><label>Owner PIN</label><input id="ownerPin" inputmode="numeric" maxlength="4" placeholder="Enter owner PIN"></div><button class="btn2" data-action="owner-login">Owner Login</button><button class="btn2" data-action="close-owner-login">Close</button></div></div>
+<div id="changePinModal" class="modalShade hidden"><div class="modal grid"><h3>Choose a New PIN</h3><p class="tiny">This account is still on a default PIN. Pick a new 4 digit PIN to finish signing in.</p><div class="field"><label>New PIN</label><input id="changePinNew" inputmode="numeric" maxlength="4" placeholder="Enter new 4 digit PIN"></div><div class="field"><label>Confirm PIN</label><input id="changePinConfirm" inputmode="numeric" maxlength="4" placeholder="Re-enter new PIN"></div><button class="btn2" data-action="save-new-pin">Save PIN</button><button class="btn2" data-action="cancel-new-pin">Cancel</button></div></div>
 <div id="iconModal" class="modalShade hidden"><div class="modal grid"><h3>Choose Icon</h3><div id="iconChoices" class="iconPicker"></div><button class="btn2" data-action="close-icon-picker">Close</button></div></div>
 <div id="installBar" class="installBar"><p>Install CampConnect for quick access.</p><button id="installBtn">Install</button><button id="dismissInstall">Later</button></div>
+<div id="updateBar" class="installBar"><p>A new version of CampConnect is ready.</p><button id="updateBtn">Refresh</button><button id="dismissUpdate">Later</button></div>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
 <script>
 (function(){
-const STORE="campconnect_multi_campground_v1", SESSION="campconnect_multi_session_v1", MSG_READS="campconnect_message_reads_v1", FIRESTORE_ROOT="campconnectV2";
+const APP_VERSION="2026.07.31.01";
+const STORE="campconnect_multi_campground_v1", SESSION="campconnect_multi_session_v1", MSG_READS="campconnect_message_reads_v1", LOCKOUTS="campconnect_login_attempts_v1", FIRESTORE_ROOT="campconnectV2";
+// A data URL is about 4/3 the size of the file it encodes, and a Firestore document
+// caps out at 1,048,576 bytes. 700KB in leaves room for the rest of the request.
+const PHOTO_MAX_BYTES=700000;
+// Staff, admin and owner accounts on one of these are forced to pick a new PIN at login.
+const WEAK_PINS=["0000","1111","2222","3333","4444","5555","6666","7777","8888","9999","1234","4321","1212","6969"];
+const MAX_LOGIN_ATTEMPTS=5, LOCKOUT_MS=15*60*1000;
 const firebaseConfig={apiKey:"AIzaSyBDWanyfiw80JzYBgqrFqWfM8hyGlcW0ck",authDomain:"campconnect-5cff2.firebaseapp.com",projectId:"campconnect-5cff2",storageBucket:"campconnect-5cff2.firebasestorage.app",messagingSenderId:"988926862629",appId:"1:988926862629:web:0515d52df29aaa4b8b26cc",measurementId:"G-T0Q7CBJJ21"};
-const app=document.getElementById("app"), topAction=document.getElementById("topAction"), menuBtn=document.getElementById("menuBtn"), appMenu=document.getElementById("appMenu"), aboutModal=document.getElementById("aboutModal"), ownerLoginModal=document.getElementById("ownerLoginModal"), iconModal=document.getElementById("iconModal"), iconChoices=document.getElementById("iconChoices"), toastEl=document.getElementById("toast"), campLabel=document.getElementById("campLabel");
+const app=document.getElementById("app"), topAction=document.getElementById("topAction"), menuBtn=document.getElementById("menuBtn"), appMenu=document.getElementById("appMenu"), aboutModal=document.getElementById("aboutModal"), ownerLoginModal=document.getElementById("ownerLoginModal"), changePinModal=document.getElementById("changePinModal"), iconModal=document.getElementById("iconModal"), iconChoices=document.getElementById("iconChoices"), toastEl=document.getElementById("toast"), campLabel=document.getElementById("campLabel");
 const DEFAULT_THEME={pine:"#0f3d2e",pine2:"#176f50",sky:"#d9edf5",bg:"#fbf3df",card:"#fffef8",ink:"#10221b",muted:"#66756e",line:"#eadfc8",danger:"#d9485f",good:"#0f9f6e",warn:"#d9922e"};
 const THEME_PACKS=[
   {name:"Newfoundland Coast",colors:{pine:"#0f3d2e",pine2:"#176f50",sky:"#d9edf5",bg:"#fbf3df",card:"#fffef8",ink:"#10221b",muted:"#66756e",line:"#eadfc8",danger:"#d9485f",good:"#0f9f6e",warn:"#d9922e"}},
@@ -62,6 +71,7 @@ function normalizeTheme(t={}){let clean={};Object.keys(DEFAULT_THEME).forEach(k=
 function sameTheme(a,b){let x=normalizeTheme(a), y=normalizeTheme(b);return Object.keys(DEFAULT_THEME).every(k=>x[k].toLowerCase()===y[k].toLowerCase())}
 function themePackIndex(theme){return THEME_PACKS.findIndex(p=>sameTheme(theme,p.colors))}
 let state=load(), role="home", actor=null, campgroundId=null, selectedService="", camperTab="request", staffTab="queue", staffRequestId=null, adminTab="sites", ownerTab="campgrounds", deferredPrompt=null;
+let pendingLogin=null;
 let db=null, applyingRemote=false, firebaseReady=false, remoteLoaded=false, remoteWriteEnabled=false, remoteSaveTimer=null, iconPickerTargetId="", syncMode="collections", messageUnsub=null, messageWatchCgId="", messageWatchReady=false;
 
 function id(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
@@ -262,7 +272,7 @@ async function startFirebaseSync(){
 }
 function saveSession(){try{sessionStorage.setItem(SESSION,JSON.stringify({role,actor,campgroundId,selectedService,camperTab,staffTab,staffRequestId,adminTab,ownerTab}))}catch{}}
 function clearSession(){try{sessionStorage.removeItem(SESSION)}catch{}}
-function restoreSession(){try{let s=JSON.parse(sessionStorage.getItem(SESSION)||"null");if(!s||s.role==="home")return false;role=s.role;campgroundId=s.campgroundId;selectedService=s.selectedService||"";camperTab=s.camperTab||"request";staffTab=s.staffTab||"queue";staffRequestId=s.staffRequestId||null;adminTab=["sites","services","staff","admins","requests","messages","settings","auditSearch","analytics"].includes(s.adminTab)?s.adminTab:"sites";ownerTab=s.ownerTab||"campgrounds";if(role==="owner"){actor=state.owners.find(x=>x.active&&norm(x.username)===norm(s.actor?.username))||state.owners.find(x=>x.active);return !!actor}let cg=getCg();if(!cg)return false;if(role==="camper")actor=cg.campers.find(c=>c.site===s.actor?.site);if(role==="staff")actor=cg.staff.find(x=>norm(x.username)===norm(s.actor?.username));if(role==="admin")actor=cg.admins.find(x=>norm(x.username)===norm(s.actor?.username));return !!actor}catch{return false}}
+function restoreSession(){try{let s=JSON.parse(sessionStorage.getItem(SESSION)||"null");if(!s||s.role==="home")return false;role=s.role;campgroundId=s.campgroundId;selectedService=s.selectedService||"";camperTab=s.camperTab||"request";staffTab=s.staffTab||"queue";staffRequestId=s.staffRequestId||null;adminTab=["sites","services","staff","admins","requests","messages","settings","auditSearch","analytics"].includes(s.adminTab)?s.adminTab:"sites";ownerTab=s.ownerTab||"campgrounds";if(role==="owner"){actor=state.owners.find(x=>x.active&&norm(x.username)===norm(s.actor?.username));return !!actor}let cg=getCg();if(!cg)return false;if(role==="camper")actor=cg.campers.find(c=>c.active&&c.site===s.actor?.site);if(role==="staff")actor=cg.staff.find(x=>x.active&&norm(x.username)===norm(s.actor?.username));if(role==="admin")actor=cg.admins.find(x=>x.active&&norm(x.username)===norm(s.actor?.username));return !!actor}catch{return false}}
 function getCg(){return state.campgrounds.find(c=>c.id===campgroundId)}
 function messageUser(){return actor?.username||actor?.name||"Staff"}
 function messageReadKey(){return `${campgroundId||"none"}:${role}:${norm(messageUser())}`}
@@ -321,8 +331,9 @@ menuBtn.onclick=e=>{e.stopPropagation();ownerAudit("Menu opened",role==="home"?"
 appMenu.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="owner-login-modal")showOwnerLogin();if(a==="share-app")shareApp();if(a==="about-app")showAbout()});
 aboutModal.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="close-about")closeAbout()});
 ownerLoginModal.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="close-owner-login")closeOwnerLogin();if(a==="owner-login")doOwnerLogin()});
+changePinModal.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="cancel-new-pin")cancelPinChange();if(a==="save-new-pin")saveNewPin()});
 iconModal.addEventListener("click",e=>{let a=e.target.closest("[data-action]")?.dataset.action;if(a==="close-icon-picker")closeIconPicker();if(a==="choose-service-icon")setServiceIcon(iconPickerTargetId,e.target.closest("[data-action]").dataset.icon)});
-document.addEventListener("click",e=>{if(!e.target.closest(".topActions"))closeMenu();if(e.target===aboutModal)closeAbout();if(e.target===ownerLoginModal)closeOwnerLogin();if(e.target===iconModal)closeIconPicker()});
+document.addEventListener("click",e=>{if(!e.target.closest(".topActions"))closeMenu();if(e.target===aboutModal)closeAbout();if(e.target===ownerLoginModal)closeOwnerLogin();if(e.target===changePinModal)cancelPinChange();if(e.target===iconModal)closeIconPicker()});
 
 function cgOptions(){return state.campgrounds.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}
 function announcementHtml(cg){let show=!!cg?.announcement;return`<div class="soft"><b>Announcement</b><p class="tiny" style="white-space:pre-wrap;margin-bottom:0">${show?esc(cg.announcement):"No announcement."}</p></div>`}
@@ -356,22 +367,135 @@ function renderHome(message=""){
     </div>
     ${message?`<div class="soft">${esc(message)}</div>`:""}
     <div id="loginAnnouncement">${announcementHtml(firstCg)}</div>
-  </section>`;
+  </section>
+  <footer class="verFooter">CampConnect &middot; ver ${esc(APP_VERSION)}</footer>`;
   q("roleSelect").onchange=()=>{let v=q("roleSelect").value;["camper","staff","admin"].forEach(x=>q(x+"Panel").classList.toggle("hidden",v!==x));q("campSelectWrap").classList.remove("hidden")};
   q("loginCampground").onchange=updateLoginAnnouncement;
 }
 function selectedLoginCg(){return state.campgrounds.find(c=>c.id===q("loginCampground").value)}
 
-function doCamperLogin(){let cg=selectedLoginCg(), site=Number(q("siteInput").value), p=pin(q("pinInput").value), camper=cg.campers.find(c=>c.active&&c.site===site&&c.pin===p);if(!camper){ownerAudit("Failed camper login",`${cg?.name||"Unknown"} / site ${site||"blank"}`);return renderHome("Invalid site number or PIN.")}ownerAudit("Camper login",`${cg.name} / site ${site}`);setRole("camper",camper,cg.id)}
-function doStaffLogin(){let cg=selectedLoginCg(), u=norm(q("staffUser").value), p=pin(q("staffPin").value), s=cg.staff.find(x=>x.active&&norm(x.username)===u&&x.pin===p);if(!s){ownerAudit("Failed staff login",`${cg?.name||"Unknown"} / ${u||"blank"}`);return renderHome("Invalid staff login for selected campground.")}ownerAudit("Staff login",`${cg.name} / ${s.username}`);setRole("staff",s,cg.id)}
-function doAdminLogin(){let cg=selectedLoginCg(), u=norm(q("adminUser").value), p=pin(q("adminPin").value), a=cg.admins.find(x=>x.active&&norm(x.username)===u&&x.pin===p);if(!a){ownerAudit("Failed admin login",`${cg?.name||"Unknown"} / ${u||"blank"}`);return renderHome("Invalid admin login for selected campground.")}ownerAudit("Admin login",`${cg.name} / ${a.username}`);setRole("admin",a,cg.id)}
-function doOwnerLogin(){let u=norm(q("ownerUser").value), p=pin(q("ownerPin").value), o=state.owners.find(x=>x.active&&norm(x.username)===u&&x.pin===p);if(!o){ownerAudit("Failed owner login",u||"blank");return alert("Invalid owner login.")}ownerAudit("Owner login",o.username);closeOwnerLogin();setRole("owner",o,null)}
+// Failed logins are counted per role per campground rather than per username, so
+// cycling through names does not reset the counter. This lives in localStorage and
+// only slows down guessing on the device doing the guessing.
+function lockoutStore(){try{return JSON.parse(localStorage.getItem(LOCKOUTS)||"{}")}catch{return {}}}
+function writeLockouts(all){try{localStorage.setItem(LOCKOUTS,JSON.stringify(all))}catch{}}
+function loginLockKey(kind,cgId){return `${kind}:${cgId||"global"}`}
+function loginLockedMs(key){let until=Number(lockoutStore()[key]?.until||0);return until>Date.now()?until-Date.now():0}
+function lockoutMessage(ms){let mins=Math.ceil(ms/60000);return `Too many failed attempts. Try again in ${mins} minute${mins===1?"":"s"}.`}
+function noteLoginFailure(key){
+  let all=lockoutStore(), rec=all[key]||{count:0,until:0};
+  rec.count=Number(rec.count||0)+1;
+  if(rec.count>=MAX_LOGIN_ATTEMPTS){rec.count=0;rec.until=Date.now()+LOCKOUT_MS}
+  all[key]=rec;
+  writeLockouts(all);
+  return rec.until>Date.now();
+}
+function clearLoginFailures(key){let all=lockoutStore();delete all[key];writeLockouts(all)}
+
+// Staff, admin and owner accounts sitting on a default PIN have to pick a new one
+// before the login completes. Campers are left alone: their PINs are handed out by
+// the office and forcing 400 sites through this would break the front desk.
+function isWeakPin(v){return WEAK_PINS.includes(pin(v))}
+function weakPinBlocked(v){if(!isWeakPin(v))return false;alert("That PIN is too easy to guess. Please choose another.");return true}
+function requirePinChange(nextRole,account,cgId){
+  pendingLogin={role:nextRole,account,cgId};
+  q("changePinNew").value="";
+  q("changePinConfirm").value="";
+  changePinModal.classList.remove("hidden");
+  setTimeout(()=>q("changePinNew")?.focus(),0);
+}
+function cancelPinChange(){
+  pendingLogin=null;
+  changePinModal.classList.add("hidden");
+  renderHome("A new PIN is required before you can sign in.");
+}
+function saveNewPin(){
+  if(!pendingLogin)return;
+  let next=pin(q("changePinNew").value), confirmPin=pin(q("changePinConfirm").value);
+  if(next.length!==4)return alert("Enter a 4 digit PIN.");
+  if(next!==confirmPin)return alert("The two PINs do not match.");
+  if(isWeakPin(next))return alert("That PIN is too easy to guess. Please choose another.");
+  let {role:nextRole,account,cgId}=pendingLogin, who=account.username||account.name||"Account";
+  account.pin=next;
+  stampRecord(account,who);
+  save();
+  if(nextRole==="owner")syncOwner(account);
+  else syncCampgroundSub(cgId,nextRole==="admin"?"admins":"staff",account);
+  ownerAudit("Replaced default PIN",`${nextRole}: ${who}`);
+  pendingLogin=null;
+  changePinModal.classList.add("hidden");
+  toast("PIN updated");
+  setRole(nextRole,account,cgId);
+}
+
+function doCamperLogin(){
+  let cg=selectedLoginCg();
+  if(!cg)return renderHome("Choose a campground first.");
+  let key=loginLockKey("camper",cg.id), wait=loginLockedMs(key);
+  if(wait)return renderHome(lockoutMessage(wait));
+  let site=Number(q("siteInput").value), p=pin(q("pinInput").value), camper=cg.campers.find(c=>c.active&&c.site===site&&c.pin===p);
+  if(!camper){
+    let locked=noteLoginFailure(key);
+    ownerAudit("Failed camper login",`${cg.name} / site ${site||"blank"}`);
+    return renderHome(locked?lockoutMessage(LOCKOUT_MS):"Invalid site number or PIN.");
+  }
+  clearLoginFailures(key);
+  ownerAudit("Camper login",`${cg.name} / site ${site}`);
+  setRole("camper",camper,cg.id);
+}
+function doStaffLogin(){
+  let cg=selectedLoginCg();
+  if(!cg)return renderHome("Choose a campground first.");
+  let key=loginLockKey("staff",cg.id), wait=loginLockedMs(key);
+  if(wait)return renderHome(lockoutMessage(wait));
+  let u=norm(q("staffUser").value), p=pin(q("staffPin").value), s=cg.staff.find(x=>x.active&&norm(x.username)===u&&x.pin===p);
+  if(!s){
+    let locked=noteLoginFailure(key);
+    ownerAudit("Failed staff login",`${cg.name} / ${u||"blank"}`);
+    return renderHome(locked?lockoutMessage(LOCKOUT_MS):"Invalid staff login for selected campground.");
+  }
+  clearLoginFailures(key);
+  ownerAudit("Staff login",`${cg.name} / ${s.username}`);
+  if(isWeakPin(s.pin))return requirePinChange("staff",s,cg.id);
+  setRole("staff",s,cg.id);
+}
+function doAdminLogin(){
+  let cg=selectedLoginCg();
+  if(!cg)return renderHome("Choose a campground first.");
+  let key=loginLockKey("admin",cg.id), wait=loginLockedMs(key);
+  if(wait)return renderHome(lockoutMessage(wait));
+  let u=norm(q("adminUser").value), p=pin(q("adminPin").value), a=cg.admins.find(x=>x.active&&norm(x.username)===u&&x.pin===p);
+  if(!a){
+    let locked=noteLoginFailure(key);
+    ownerAudit("Failed admin login",`${cg.name} / ${u||"blank"}`);
+    return renderHome(locked?lockoutMessage(LOCKOUT_MS):"Invalid admin login for selected campground.");
+  }
+  clearLoginFailures(key);
+  ownerAudit("Admin login",`${cg.name} / ${a.username}`);
+  if(isWeakPin(a.pin))return requirePinChange("admin",a,cg.id);
+  setRole("admin",a,cg.id);
+}
+function doOwnerLogin(){
+  let key=loginLockKey("owner"), wait=loginLockedMs(key);
+  if(wait)return alert(lockoutMessage(wait));
+  let u=norm(q("ownerUser").value), p=pin(q("ownerPin").value), o=state.owners.find(x=>x.active&&norm(x.username)===u&&x.pin===p);
+  if(!o){
+    let locked=noteLoginFailure(key);
+    ownerAudit("Failed owner login",u||"blank");
+    return alert(locked?lockoutMessage(LOCKOUT_MS):"Invalid owner login.");
+  }
+  clearLoginFailures(key);
+  ownerAudit("Owner login",o.username);
+  closeOwnerLogin();
+  if(isWeakPin(o.pin))return requirePinChange("owner",o,null);
+  setRole("owner",o,null);
+}
 
 function renderCamper(){let cg=getCg(), current=cg.campers.find(c=>c.site===actor.site)||actor, services=cg.services.filter(s=>s.active), history=cg.requests.filter(r=>r.site===actor.site).slice(0,20), disabled=current.serviceDisabled===true, openNow=serviceOpen(cg);if(disabled)selectedService="";if(selectedService&&!services.some(s=>s.name===selectedService))selectedService="";app.innerHTML=`<section class="card"><div><b>Site ${actor.site}</b><div class="tiny">${esc(actor.name)}</div><div class="chipRow">${disabled?`<span class="badge canceled">Service requests disabled</span>`:""}<span class="badge ${openNow?"open":"canceled"}">${openNow?"Service Hours Open":"After Hours"}</span></div></div></section><div class="tabs"><button class="tab ${camperTab==="request"?"active":""}" data-action="camper-tab" data-tab="request">Request</button><button class="tab ${camperTab==="history"?"active":""}" data-action="camper-tab" data-tab="history">History</button><button class="tab ${camperTab==="account"?"active":""}" data-action="camper-tab" data-tab="account">Account</button></div>${camperTab==="request"?disabled?`<section class="card"><h3>Request a Service</h3><p class="tiny">Service requests are currently disabled for this site. Please contact the campground office.</p></section>`:`<section class="card grid"><h3>Request a Service</h3>${services.length?`<div class="serviceGrid">${services.map(s=>`<button class="service ${selectedService===s.name?"selected":""}" data-action="select-service" data-service="${esc(s.name)}"><span>${esc(s.icon)}</span><b>${esc(s.name)}</b></button>`).join("")}</div>`:`<p class="tiny">No services are available right now.</p>`}<div class="field"><label>Priority</label><select id="requestPriority">${priorityOptions()}</select></div><div class="field"><label>Photo</label><input id="requestPhoto" type="file" accept="image/*"></div><div class="field"><label>Notes</label><textarea id="requestNotes" placeholder="Optional notes"></textarea></div><button data-action="submit-request" ${selectedService?"":"disabled"}>${selectedService?`Submit ${esc(selectedService)} Request`:"Select a Service"}</button>${announcementHtml(cg,actor.site)}</section>`:camperTab==="history"?`<section class="card"><h3>History</h3>${history.length?history.map(requestHistoryCard).join(""):`<p class="tiny">No requests yet.</p>`}</section>`:camperAccountTab()}`}
 function camperAccountTab(){return`<section class="card grid"><h3>Account</h3><div class="soft"><b>Site ${actor.site}</b><p class="tiny">Update your name and login PIN.</p></div><div class="field"><label>Name</label><input id="camperAccountName" maxlength="20" value="${esc(actor.name)}" placeholder="Your name"></div><div class="field"><label>4 Digit PIN</label><input id="camperAccountPin" inputmode="numeric" maxlength="4" value="${esc(actor.pin)}"></div><button data-action="save-camper-account">Save Account</button></section>${camperThemeControls(actor.theme)}`}
 function requestTime(r){let t=Number(r.createdMs||r.createdAtMs||0);if(t)return t;t=Date.parse(r.createdAt||"");return Number.isFinite(t)?t:0}
 function requestHistoryCard(r){return`<div class="soft" style="margin-bottom:8px"><b>${esc(r.service)}</b> <span class="badge ${r.status==="open"?"open":r.status==="canceled"?"canceled":"closed"}">${esc(r.status)}</span> <span class="badge ${priorityClass(r.priority)}">${esc(r.priority||"Normal")}</span><p class="tiny">${esc(r.createdAt)}</p>${r.photo?`<img class="photoThumb" src="${esc(r.photo)}" alt="Request photo">`:""}${r.notes?`<div class="tiny">${esc(r.notes)}</div>`:""}</div>`}
-function readPhotoFile(input){return new Promise(resolve=>{let f=input?.files?.[0];if(!f)return resolve({photo:"",photoName:""});if(f.size>900000)return resolve({error:"Photo is too large. Please choose a smaller image."});let r=new FileReader();r.onload=()=>resolve({photo:String(r.result||""),photoName:f.name});r.onerror=()=>resolve({error:"Could not read photo."});r.readAsDataURL(f)})}
+function readPhotoFile(input){return new Promise(resolve=>{let f=input?.files?.[0];if(!f)return resolve({photo:"",photoName:""});if(f.size>PHOTO_MAX_BYTES)return resolve({error:"Photo is too large. Please choose a smaller image."});let r=new FileReader();r.onload=()=>resolve({photo:String(r.result||""),photoName:f.name});r.onerror=()=>resolve({error:"Could not read photo."});r.readAsDataURL(f)})}
 async function submitRequest(){let cg=getCg(), current=cg.campers.find(c=>c.site===actor.site)||actor;if(current.serviceDisabled===true)return alert("Service requests are currently disabled for this site. Please contact the campground office.");if(!serviceOpen(cg))return alert(`Service requests are available from ${cg.serviceStart} to ${cg.serviceEnd}.`);if(!selectedService)return alert("Choose a service first.");let last=cg.requests.filter(r=>r.site===actor.site).map(requestTime).filter(Boolean).sort((a,b)=>b-a)[0]||0, waitMs=5*60*1000-(Date.now()-last);if(waitMs>0)return alert("You must wait at least 5 minutes before requesting another service.");let photo=await readPhotoFile(q("requestPhoto"));if(photo.error)return alert(photo.error);let req={id:id(),site:actor.site,name:actor.name,service:selectedService,priority:q("requestPriority")?.value||"Normal",photo:photo.photo,photoName:photo.photoName,notes:q("requestNotes")?.value.trim()||"",status:"open",assignedTo:"",assignedAt:"",createdAt:now(),createdMs:Date.now(),date:dateKey()};ensureRecordMeta(req);cg.requests.unshift(req);audit("Created request",`${req.priority} ${req.service} for site ${req.site}`);syncRequest(cg.id,req);selectedService="";toast("Request submitted");renderCamper()}
 function saveCamperAccount(){let cg=getCg(), c=cg.campers.find(x=>x.site===actor.site), name=q("camperAccountName")?.value.trim(), p=pin(q("camperAccountPin")?.value);if(!c)return alert("Camper account not found.");if(!name||p.length!==4)return alert("Name and 4 digit PIN required.");if(!validCamperName(name))return;c.name=name;c.pin=p;actor=c;stampRecord(c);cg.requests.forEach(r=>{if(r.site===c.site){r.name=name;stampRecord(r);syncRequest(cg.id,r)}});audit("Updated camper account",`Site ${c.site}: ${name}`);save();syncCampgroundSub(cg.id,"campers",c);toast("Account updated");renderCamper()}
 function saveCamperThemePack(index){if(index==="")return clearCamperTheme();let pack=THEME_PACKS[Number(index)], cg=getCg(), c=cg.campers.find(x=>x.site===actor.site);if(!pack||!c)return;c.theme=normalizeTheme(pack.colors);actor=c;stampRecord(c);audit("Updated camper theme",`Site ${c.site}: ${pack.name}`);save();syncCampgroundSub(cg.id,"campers",c);applyTheme(c);toast(`${pack.name} saved`)}
@@ -430,7 +554,7 @@ function saveSite(siteNumber){let cg=getCg(), c=cg.campers.find(x=>x.site===site
 function resetSitePin(siteNumber){let cg=getCg(), c=cg.campers.find(x=>x.site===siteNumber);c.pin=randomPin(new Set(cg.campers.filter(x=>x.site!==siteNumber).map(x=>x.pin)));stampRecord(c);audit("Reset site PIN",`Site ${siteNumber}`);save();syncCampgroundSub(cg.id,"campers",c);adminSearchSite()}
 function resetSiteName(siteNumber){let cg=getCg(), c=cg.campers.find(x=>x.site===siteNumber);c.name="Site "+siteNumber;stampRecord(c);cg.requests.forEach(r=>{if(r.site===siteNumber){r.name=c.name;stampRecord(r);syncRequest(cg.id,r)}});audit("Reset site name",`Site ${siteNumber}`);save();syncCampgroundSub(cg.id,"campers",c);adminSearchSite()}
 function toggleSiteRequests(siteNumber){let cg=getCg(), c=cg.campers.find(x=>x.site===siteNumber);if(!c)return alert("Site not found.");c.serviceDisabled=!c.serviceDisabled;stampRecord(c);audit(c.serviceDisabled?"Disabled site requests":"Enabled site requests",`Site ${siteNumber}: ${c.name}`);save();syncCampgroundSub(cg.id,"campers",c);toast(c.serviceDisabled?"Service requests disabled":"Service requests enabled");adminSearchSite()}
-function addStaff(){let cg=getCg(), u=q("newStaffUser").value.trim(), p=pin(q("newStaffPin").value);if(!u||p.length!==4)return alert("Username and PIN required.");if(cg.staff.some(s=>norm(s.username)===norm(u)))return alert("Username exists.");let staff=ensureRecordMeta({id:id(),username:u,pin:p,active:true});cg.staff.push(staff);audit("Added staff",u);save();syncCampgroundSub(cg.id,"staff",staff);renderAdmin()}
+function addStaff(){let cg=getCg(), u=q("newStaffUser").value.trim(), p=pin(q("newStaffPin").value);if(!u||p.length!==4)return alert("Username and PIN required.");if(weakPinBlocked(p))return;if(cg.staff.some(s=>norm(s.username)===norm(u)))return alert("Username exists.");let staff=ensureRecordMeta({id:id(),username:u,pin:p,active:true});cg.staff.push(staff);audit("Added staff",u);save();syncCampgroundSub(cg.id,"staff",staff);renderAdmin()}
 function activeServiceCount(){return getCg().services.filter(s=>s.active).length}
 function addService(){let cg=getCg(), name=q("newServiceName").value.trim(), icon=(q("newServiceIcon").value.trim()||"🔧");if(!name)return alert("Service name required.");if(cg.services.some(s=>norm(s.name)===norm(name)))return alert("Service already exists.");normalizeServiceOrder(cg);let service=ensureRecordMeta({id:id(),name,icon,active:true,sortOrder:cg.services.length});cg.services.push(service);audit("Added service",name);save();syncCampgroundSub(cg.id,"services",service);toast("Service added");renderAdmin()}
 function setServiceIcon(targetId,icon){let el=q(targetId), btn=q(targetId+"Btn");if(el){el.value=icon;if(btn)btn.textContent=icon;closeIconPicker()}}
@@ -438,7 +562,7 @@ function saveService(i){let cg=getCg(), s=cg.services[Number(i)], name=q("servic
 function toggleService(i){let s=getCg().services[Number(i)];if(!s)return;if(s.active&&activeServiceCount()<=1)return alert("Keep at least one active service.");s.active=!s.active;stampRecord(s);if(!s.active&&selectedService===s.name)selectedService="";audit(s.active?"Enabled service":"Disabled service",s.name);save();syncCampgroundSub(getCg().id,"services",s);renderAdmin()}
 function deleteService(i){let cg=getCg(), s=cg.services[Number(i)];if(!s)return;if(s.active&&activeServiceCount()<=1)return alert("Keep at least one active service.");if(!confirm(`Delete service ${s.name}? Existing request history will keep its service name.`))return;softDeleteRecord(s);syncCampgroundSub(cg.id,"services",s);cg.services.splice(Number(i),1);normalizeServiceOrder(cg);cg.services.forEach(x=>{stampRecord(x);syncCampgroundSub(cg.id,"services",x)});if(selectedService===s.name)selectedService="";audit("Deleted service",s.name);saveLocalOnly();toast("Service deleted");renderAdmin()}
 function moveService(i,dir){let cg=getCg(), from=Number(i), to=from+Number(dir);normalizeServiceOrder(cg);if(to<0||to>=cg.services.length)return;[cg.services[from],cg.services[to]]=[cg.services[to],cg.services[from]];assignServiceOrder(cg);let moved=[cg.services[from],cg.services[to]].filter(Boolean);moved.forEach(s=>{s.lastUpdatedAt=Date.now();s.lastUpdatedBy=actor?.username||actor?.name||"System";syncServiceOrder(cg.id,s)});audit("Reordered services",cg.services.map(s=>s.name).join(", "));saveLocalOnly();toast("Service moved");renderAdmin()}
-function addAdmin(){let cg=getCg(), u=q("newAdminUser").value.trim(), p=pin(q("newAdminPin").value);if(!u||p.length!==4)return alert("Username and PIN required.");if(cg.admins.some(a=>norm(a.username)===norm(u)))return alert("Username exists.");let admin=ensureRecordMeta({id:id(),username:u,pin:p,active:true});cg.admins.push(admin);audit("Added admin",u);save();syncCampgroundSub(cg.id,"admins",admin);renderAdmin()}
+function addAdmin(){let cg=getCg(), u=q("newAdminUser").value.trim(), p=pin(q("newAdminPin").value);if(!u||p.length!==4)return alert("Username and PIN required.");if(weakPinBlocked(p))return;if(cg.admins.some(a=>norm(a.username)===norm(u)))return alert("Username exists.");let admin=ensureRecordMeta({id:id(),username:u,pin:p,active:true});cg.admins.push(admin);audit("Added admin",u);save();syncCampgroundSub(cg.id,"admins",admin);renderAdmin()}
 function toggleStaff(i){let s=getCg().staff[Number(i)];s.active=!s.active;stampRecord(s);audit(s.active?"Enabled staff":"Disabled staff",s.username);save();syncCampgroundSub(getCg().id,"staff",s);renderAdmin()}
 function deleteStaff(i){let cg=getCg(), s=cg.staff[Number(i)];softDeleteRecord(s);syncCampgroundSub(cg.id,"staff",s);cg.staff.splice(Number(i),1);audit("Deleted staff",s.username);saveLocalOnly();renderAdmin()}
 function activeAdminCount(){return getCg().admins.filter(a=>a.active).length}
@@ -453,10 +577,10 @@ function ownerExportsTab(){return`<section class="card grid"><h3>Exports</h3><bu
 function addCampground(){let name=q("newCgName").value.trim(), sites=Number(q("newCgSites").value)||400;if(!name)return alert("Campground name required.");if(state.campgrounds.some(c=>norm(c.name)===norm(name)))return alert("Campground already exists.");let cg=ensureMetaForData({campgrounds:[makeCampground(name,sites)]}).campgrounds[0];state.campgrounds.push(cg);ownerAudit("Added campground",`${name} / ${sites} sites`);save();syncFullCampground(cg);toast("Campground added");renderOwner()}
 function deleteCampground(cgId){if(state.campgrounds.length<=1)return alert("Keep at least one campground.");let cg=state.campgrounds.find(c=>c.id===cgId);if(!cg)return;if(!confirm(`Remove ${cg.name}? This deletes its sites, staff, admins, requests, and audit log from this device.`))return;ownerAudit("Soft-deleted campground",`${cg.name} / ${cg.siteCount} sites / ${cg.requests.length} requests`);softDeleteRecord(cg);syncCampground(cg);state.campgrounds=state.campgrounds.filter(c=>c.id!==cgId);if(campgroundId===cgId)campgroundId=null;saveLocalOnly();toast("Campground removed");renderOwner()}
 function ownerUpdateSites(cgId){let cg=state.campgrounds.find(c=>c.id===cgId), next=Math.floor(Number(q("ownerSiteCount-"+cgId)?.value));if(!cg)return;if(!next||next<1)return alert("Enter at least 1 site.");let old=cg.siteCount;if(next===old)return toast("Site count unchanged");if(next<old&&!confirm(`Reduce ${cg.name} from ${old} sites to ${next}? Sites ${next+1} through ${old} will be removed.`))return;let used=new Set(cg.campers.map(x=>x.pin).filter(Boolean)), removedCampers=[], removedRequests=[];if(next>old){for(let i=old+1;i<=next;i++)if(!cg.campers.some(x=>x.site===i)){let camper=ensureRecordMeta({site:i,name:"Site "+i,pin:randomPin(used),active:true,serviceDisabled:false});cg.campers.push(camper);syncCampgroundSub(cg.id,"campers",camper)}}else{removedCampers=cg.campers.filter(c=>c.site>next);removedRequests=cg.requests.filter(r=>Number(r.site)>next);removedCampers.forEach(c=>{softDeleteRecord(c);syncCampgroundSub(cg.id,"campers",c)});removedRequests.forEach(r=>{softDeleteRecord(r);syncRequest(cg.id,r)});cg.campers=cg.campers.filter(c=>c.site<=next);cg.requests=cg.requests.filter(r=>Number(r.site)<=next)}cg.siteCount=next;stampRecord(cg);cg.campers.sort((a,b)=>a.site-b.site);let auditItem=ensureRecordMeta({id:id(),at:now(),actor:actor?.username||"Owner",action:"Updated site count",details:`${old} -> ${next}`,active:true});cg.audit.unshift(auditItem);ownerAudit("Updated campground site count",`${cg.name}: ${old} -> ${next}`);save();syncCampground(cg);syncAudit(cg.id,auditItem);toast("Site count updated");renderOwner()}
-function ownerAddAdmin(cgId){let cg=state.campgrounds.find(c=>c.id===cgId), u=q("ownerAdminUser-"+cgId)?.value.trim(), p=pin(q("ownerAdminPin-"+cgId)?.value);if(!cg)return;if(!u||p.length!==4)return alert("Admin username and 4 digit PIN required.");if(cg.admins.some(a=>norm(a.username)===norm(u)))return alert("Admin username exists for this campground.");let admin=ensureRecordMeta({id:id(),username:u,pin:p,active:true}), auditItem=ensureRecordMeta({id:id(),at:now(),actor:actor?.username||"Owner",action:"Added admin",details:u,active:true});cg.admins.push(admin);cg.audit.unshift(auditItem);ownerAudit("Owner added campground admin",`${cg.name} / ${u}`);save();syncCampgroundSub(cg.id,"admins",admin);syncAudit(cg.id,auditItem);toast(cg.admins.length===1?"First admin added":"Admin added");renderOwner()}
+function ownerAddAdmin(cgId){let cg=state.campgrounds.find(c=>c.id===cgId), u=q("ownerAdminUser-"+cgId)?.value.trim(), p=pin(q("ownerAdminPin-"+cgId)?.value);if(!cg)return;if(!u||p.length!==4)return alert("Admin username and 4 digit PIN required.");if(weakPinBlocked(p))return;if(cg.admins.some(a=>norm(a.username)===norm(u)))return alert("Admin username exists for this campground.");let admin=ensureRecordMeta({id:id(),username:u,pin:p,active:true}), auditItem=ensureRecordMeta({id:id(),at:now(),actor:actor?.username||"Owner",action:"Added admin",details:u,active:true});cg.admins.push(admin);cg.audit.unshift(auditItem);ownerAudit("Owner added campground admin",`${cg.name} / ${u}`);save();syncCampgroundSub(cg.id,"admins",admin);syncAudit(cg.id,auditItem);toast(cg.admins.length===1?"First admin added":"Admin added");renderOwner()}
 function activeOwnerCount(){return state.owners.filter(o=>o.active).length}
-function addOwner(){let u=q("newOwnerUser").value.trim(), p=pin(q("newOwnerPin").value);if(!u||p.length!==4)return alert("Username and 4 digit PIN required.");if(state.owners.some(o=>norm(o.username)===norm(u)))return alert("Owner username exists.");let owner=ensureRecordMeta({id:id(),username:u,pin:p,active:true});state.owners.push(owner);ownerAudit("Added owner",u);save();syncOwner(owner);toast("Owner added");renderOwner()}
-function saveOwnerPin(i){let o=state.owners[Number(i)], p=pin(q("ownerPin"+i)?.value);if(!o||p.length!==4)return alert("4 digit PIN required.");o.pin=p;stampRecord(o);ownerAudit("Updated owner PIN",o.username);save();syncOwner(o);toast("Owner PIN updated");renderOwner()}
+function addOwner(){let u=q("newOwnerUser").value.trim(), p=pin(q("newOwnerPin").value);if(!u||p.length!==4)return alert("Username and 4 digit PIN required.");if(weakPinBlocked(p))return;if(state.owners.some(o=>norm(o.username)===norm(u)))return alert("Owner username exists.");let owner=ensureRecordMeta({id:id(),username:u,pin:p,active:true});state.owners.push(owner);ownerAudit("Added owner",u);save();syncOwner(owner);toast("Owner added");renderOwner()}
+function saveOwnerPin(i){let o=state.owners[Number(i)], p=pin(q("ownerPin"+i)?.value);if(!o||p.length!==4)return alert("4 digit PIN required.");if(weakPinBlocked(p))return;o.pin=p;stampRecord(o);ownerAudit("Updated owner PIN",o.username);save();syncOwner(o);toast("Owner PIN updated");renderOwner()}
 function toggleOwner(i){let o=state.owners[Number(i)];if(!o)return;if(o.active&&activeOwnerCount()<=1)return alert("Keep at least one active owner.");o.active=!o.active;stampRecord(o);ownerAudit(o.active?"Enabled owner":"Disabled owner",o.username);save();syncOwner(o);toast(o.active?"Owner enabled":"Owner disabled");renderOwner()}
 function deleteOwner(i){let o=state.owners[Number(i)];if(!o)return;if(o.active&&activeOwnerCount()<=1)return alert("Keep at least one active owner.");if(actor&&norm(actor.username)===norm(o.username))return alert("You cannot delete the owner account you are using.");softDeleteRecord(o);syncOwner(o);ownerAudit("Deleted owner",o.username);state.owners.splice(Number(i),1);state.owner=state.owners[0];saveLocalOnly();toast("Owner deleted");renderOwner()}
 function exportOwnerSummary(){ownerAudit("Exported owner summary","All campgrounds summary CSV");let rows=[["Campground","Sites","Open Requests","Total Requests","Admins","Staff"]];state.campgrounds.forEach(c=>rows.push([c.name,c.siteCount,c.requests.filter(r=>r.status==="open").length,c.requests.length,c.admins.length,c.staff.length]));download("campconnect-all-campgrounds-summary.csv",csv(rows),"text/csv")}
@@ -472,7 +596,31 @@ app.addEventListener("click",e=>{let target=e.target.closest("[data-action]");if
 app.addEventListener("input",e=>{if(["pinInput","staffPin","adminPin","newOwnerPin","newStaffPin","newAdminPin","editSitePin","camperAccountPin","staffResetPin"].includes(e.target.id)||/^ownerPin\d+$/.test(e.target.id)||/^ownerAdminPin-/.test(e.target.id))e.target.value=pin(e.target.value);if(/^theme-/.test(e.target.id)){let theme={};Object.keys(DEFAULT_THEME).forEach(k=>theme[k]=q("theme-"+k)?.value||DEFAULT_THEME[k]);applyTheme({theme});let pack=q("themePack");if(pack)pack.value=""}});
 app.addEventListener("change",e=>{if(e.target.id==="themePack")applyThemePack(e.target.value);if(e.target.id==="camperThemePack")saveCamperThemePack(e.target.value)});
 ownerLoginModal.addEventListener("input",e=>{if(e.target.id==="ownerPin")e.target.value=pin(e.target.value)});
-function setupPWA(){if("serviceWorker"in navigator&&location.protocol!=="file:")navigator.serviceWorker.register("./service-worker.js").catch(()=>{});window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;document.getElementById("installBar").classList.add("show")});document.getElementById("installBtn").onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}document.getElementById("installBar").classList.remove("show")};document.getElementById("dismissInstall").onclick=()=>document.getElementById("installBar").classList.remove("show")}
+function showUpdateBar(){document.getElementById("updateBar").classList.add("show")}
+function watchForUpdates(reg){
+  // An installed worker while one is already controlling the page means the files
+  // on the server changed. Offer a refresh instead of reloading out from under them.
+  if(reg.waiting&&navigator.serviceWorker.controller)showUpdateBar();
+  reg.addEventListener("updatefound",()=>{
+    const sw=reg.installing;
+    if(!sw)return;
+    sw.addEventListener("statechange",()=>{
+      if(sw.state==="installed"&&navigator.serviceWorker.controller)showUpdateBar();
+    });
+  });
+  setInterval(()=>reg.update().catch(()=>{}),30*60*1000);
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden)reg.update().catch(()=>{})});
+}
+function setupPWA(){
+  const aboutVersion=document.getElementById("aboutVersion");
+  if(aboutVersion)aboutVersion.textContent=APP_VERSION;
+  if("serviceWorker"in navigator&&location.protocol!=="file:")navigator.serviceWorker.register("./service-worker.js").then(watchForUpdates).catch(()=>{});
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;document.getElementById("installBar").classList.add("show")});
+  document.getElementById("installBtn").onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}document.getElementById("installBar").classList.remove("show")};
+  document.getElementById("dismissInstall").onclick=()=>document.getElementById("installBar").classList.remove("show");
+  document.getElementById("updateBtn").onclick=()=>location.reload();
+  document.getElementById("dismissUpdate").onclick=()=>document.getElementById("updateBar").classList.remove("show");
+}
 setupPWA();if(restoreSession())render();else render();startFirebaseSync();
 })();
 </script>

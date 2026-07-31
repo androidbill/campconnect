@@ -1,0 +1,62 @@
+rules_version = '2';
+
+// CampConnect Firestore rules.
+//
+// IMPORTANT — read this before assuming these rules protect PINs.
+//
+// The app authenticates every role (owner, admin, staff, camper) by comparing a PIN
+// on the client against data it has already downloaded. That means the whole data
+// set, PINs included, has to be readable before anyone logs in, and the app signs in
+// anonymously to do it. No rule written here can hide PINs from a signed-in client
+// while the app still works this way.
+//
+// What these rules DO buy:
+//   * writes are confined to the app's own root collection
+//   * nothing can be hard deleted (the app soft deletes by setting active=false)
+//   * a write must carry a version number higher than the one already stored, so a
+//     stale device cannot roll back newer data
+//
+// Making PINs genuinely private requires moving login to a Cloud Function that checks
+// the PIN server side and mints a custom token, then restricting reads to the caller's
+// campground claim. That is a rewrite, not a rules change.
+//
+// Deploy with:  firebase deploy --only firestore:rules
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Every write in the app goes through safeSetDoc(), which bumps version inside a
+    // transaction. Requiring a strictly higher version keeps an out-of-date client
+    // from overwriting fresher data.
+    function movesForward() {
+      return request.resource.data.version is number
+        && (resource == null || request.resource.data.version > resource.data.version);
+    }
+
+    // /campconnectV2/{owners|campgrounds|ownerAudit}/items/{docId}
+    match /campconnectV2/{section} {
+      allow read: if signedIn();
+      allow write: if false;
+
+      match /items/{docId} {
+        allow read: if signedIn();
+        allow create, update: if signedIn() && movesForward();
+        allow delete: if false;
+
+        // Campground subcollections: campers, requests, messages, staff, admins,
+        // services, audit.
+        match /{subCollection}/{subDocId} {
+          allow read: if signedIn();
+          allow create, update: if signedIn() && movesForward();
+          allow delete: if false;
+        }
+      }
+    }
+
+    // Anything outside /campconnectV2 is denied by default and stays that way.
+  }
+}
